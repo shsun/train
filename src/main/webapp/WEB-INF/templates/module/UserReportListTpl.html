@@ -1,0 +1,47 @@
+<div cg-busy="{promise:promise,templateUrl:'',message:'正在加载...',backdrop:true,delay:0,minDuration:0}">
+<form class="form-horizontal" role="form">
+	<div class="form-group form-group-sm" style="margin-bottom:0px;">
+		<label class="control-label col-md-1 col-sm-2 col-xs-4 text-right">ID</label>
+		<div class="col-md-3 col-sm-4 col-xs-8">
+				<input type="text" class="form-control input-sm" ng-model="searchForm.id" placeholder="ID">
+	    </div>
+		<label class="control-label col-md-1 col-sm-2 col-xs-4 text-right">员工名称</label>
+		<div class="col-md-3 col-sm-4 col-xs-8">
+				<input type="text" class="form-control input-sm" ng-model="searchForm.name" placeholder="员工名称">
+	    </div>
+		<label class="control-label col-md-1 col-sm-2 col-xs-4 text-right">员工生日</label>
+		<div class="col-md-3 col-sm-4 col-xs-8">
+				<p class="input-group input-group-sm">
+					<input type="text" class="form-control btn-sm" placeholder="日期" datepicker-localdate uib-datepicker-popup ng-model="searchForm.birthday" is-open="birthdayOpened" datepicker-options="{formatYear: 'yy',startingDay: 1}" ng-required="false" current-text="今天"  clear-text="清空" close-text="关闭" />
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-default btn-sm" ng-click="birthdayOpened=true"><i class="glyphicon glyphicon-calendar"></i></button>
+					</span>
+				</p>
+	    </div>
+	</div>
+	<div class="form-group form-group-sm" style="margin-bottom:0px;">
+		<div class="col-md-12">
+			<div class="form-group form-group-sm">
+				<div class="pull-right" style="padding-right:20px;">
+					<button type="submit" class="btn btn-danger btn-sm" ng-click="search();">查询</button>
+					<button type="button" class="btn btn-default btn-sm" ng-click="clearSearch();">清空</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+<ac-table>
+    <ac-table-column header="ID" field="id" sortable="true"></ac-table-column>
+    <ac-table-column header="员工名称" field="name" sortable="true"></ac-table-column>
+    <ac-table-column header="年龄" field="age" sortable="true"></ac-table-column>
+    <ac-table-column header="员工生日" field="birthday" sortable="true"></ac-table-column>
+    <ac-table-column header="邮箱地址" field="email" sortable="true"></ac-table-column>
+    <ac-table-column header="部门ID" field="departmentId" sortable="true"></ac-table-column>
+    <ac-table-column header="部门名称" field="departmentName" sortable="true"></ac-table-column>
+    <ac-table-column header="电话" field="phone" sortable="true"></ac-table-column>
+    <ac-table-column header="地址" field="address" sortable="true"></ac-table-column>
+	<ac-table-grid items="dataList" selectable="false" multiple="false" id-field="id" selected-items="selectedItems" paging="pagination" on-sort-change="search()"></ac-table-grid>
+</ac-table>
+<pagination total-items="dataList.total" paging="pagination" ng-model="pagination.currentPage" on-page-change="pageChanged()"></pagination>
+</div>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.1.xsd
+    http://www.springframework.org/schema/mvc
+    http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+    ">
+	
+	<!-- 
+	<bean id="adStatsService" class="com.youku.addata.adstat2.m.AdStatsService">
+	</bean>
+	
+	<bean id="inventoryService" class="com.youku.addata.adstat2.m.InventoryService">
+	</bean>
+	
+	<bean id="impressionService" class="com.youku.addata.adstat2.m.ImpressionService">
+	</bean>
+	
+	<bean id="videoGroupInventoryService" class="com.youku.addata.adstat2.m.VideoGroupInventoryService">
+	</bean>	
+	-->	
+		
+</beans>	

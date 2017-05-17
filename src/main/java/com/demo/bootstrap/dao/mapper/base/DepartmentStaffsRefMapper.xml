@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.bootstrap.dao.mapper.base.DepartmentStaffsRefMapper">
+
+	<insert id="insert" parameterType="com.demo.bootstrap.dao.entity.DepartmentStaffsRefEty">
+		insert into department_staffs_ref(
+			iD,departmentId,staffId)
+		values (
+			#{iD},#{departmentId},#{staffId}
+		)
+	</insert>
+
+	<select id="selectById" parameterType="int" resultType="com.demo.bootstrap.dao.entity.DepartmentStaffsRefEty">
+		select * from department_staffs_ref where iD=#{value}
+	</select>
+
+	<delete id="deleteById" parameterType="int">
+		DELETE FROM department_staffs_ref WHERE iD=#{value}
+	</delete>
+
+	<select id="selectByEntity" parameterType="com.demo.bootstrap.dao.entity.DepartmentStaffsRefEty" resultType="com.demo.bootstrap.dao.entity.DepartmentStaffsRefEty">
+		SELECT * from department_staffs_ref
+		WHERE 1=1 
+		<if test="iD != null "> AND iD=#{iD}</if>
+		<if test="departmentId != null "> AND departmentId=#{departmentId}</if>
+		<if test="staffId != null "> AND staffId=#{staffId}</if>
+		<if test="extLimit == null"> order by iD desc</if>
+		<if test="extLimit != null">
+			<if test="extLimit.sort == null"> order by iD desc</if>
+			<if test="extLimit.sort != null"> order by ${extLimit.sort} ${extLimit.dir}</if>
+			<if test="extLimit.limit != null"> limit ${extLimit.start}, ${extLimit.limit}</if>
+		</if>
+	</select>
+
+	<update id="updateById" parameterType="com.demo.bootstrap.dao.entity.DepartmentStaffsRefEty">
+		UPDATE department_staffs_ref SET
+		<if test="iD != null">iD=#{iD},</if>
+		<if test="departmentId != null">departmentId=#{departmentId},</if>
+		<if test="staffId != null">staffId=#{staffId},</if>
+		 iD=#{iD}
+		WHERE
+		 iD=#{iD}
+	</update>
+
+	<select id="selectByLimit" parameterType="com.demo.bootstrap.dao.entity.DepartmentStaffsRefEty" resultType="com.demo.bootstrap.dao.entity.DepartmentStaffsRefEty">
+		SELECT * from department_staffs_ref
+		WHERE 1=1 
+		<if test="iD != null "> AND iD=#{iD}</if>
+		<if test="departmentId != null "> AND departmentId=#{departmentId}</if>
+		<if test="staffId != null "> AND staffId=#{staffId}</if>
+		<if test="extLimit == null"> order by iD desc</if>
+		<if test="extLimit != null">
+			<if test="extLimit.sort == null"> order by iD desc</if>
+			<if test="extLimit.sort != null"> order by ${extLimit.sort} ${extLimit.dir}</if>
+			<if test="extLimit.limit != null"> limit ${extLimit.start}, ${extLimit.limit}</if>
+		</if>
+	</select>
+
+	<select id="selectLimitCount" parameterType="com.demo.bootstrap.dao.entity.DepartmentStaffsRefEty" resultType="java.lang.Integer">
+		SELECT count(1) from department_staffs_ref
+		WHERE 1=1 
+		<if test="iD != null "> AND iD=#{iD}</if>
+		<if test="departmentId != null "> AND departmentId=#{departmentId}</if>
+		<if test="staffId != null "> AND staffId=#{staffId}</if>
+	</select>
+</mapper>
