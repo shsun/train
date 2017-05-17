@@ -3,6 +3,7 @@
 <beans>
 
 	<!-- channel job, reloadChannel at 01:05 -->
+	<!--
 	<bean id="channelReloadJob"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 		<property name="targetObject" ref="adStatsService" />
@@ -13,8 +14,10 @@
 		<property name="jobDetail" ref="channelReloadJob" />
 		<property name="cronExpression" value="0 5 1,12 * * ?" />
 	</bean>
+	-->
 
 	<!-- geo job, reloadGEO at 01:10 -->
+	<!--
 	<bean id="geoReloadJob"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 		<property name="targetObject" ref="adStatsService" />
@@ -25,8 +28,10 @@
 		<property name="jobDetail" ref="geoReloadJob" />
 		<property name="cronExpression" value="0 10 1,12 * * ?" />
 	</bean>
+	-->
 
 	<!-- ad slot job, reloadAdSlot at 01:15 -->
+	<!--
 	<bean id="adSlotReloadJob"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 		<property name="targetObject" ref="adStatsService" />
@@ -37,8 +42,10 @@
 		<property name="jobDetail" ref="adSlotReloadJob" />
 		<property name="cronExpression" value="0 15 1,12 * * ?" />
 	</bean>
+	-->
 
 	<!-- ad type job, reloadAdType at 01:20 -->
+	<!--
 	<bean id="adTypeReloadJob"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 		<property name="targetObject" ref="adStatsService" />
@@ -49,8 +56,10 @@
 		<property name="jobDetail" ref="adTypeReloadJob" />
 		<property name="cronExpression" value="0 20 1,12 * * ?" />
 	</bean>
-
+ 	-->
+ 
 	<!-- segment job, reloadSegment at 01:25 -->
+	<!-- 
 	<bean id="segmentReloadJob"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 		<property name="targetObject" ref="adStatsService" />
@@ -68,12 +77,16 @@
 		<property name="targetMethod" value="reloadVideoGroup" />
 		<property name="concurrent" value="false" />
 	</bean>
+	
 	<bean id="videoGroupTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
 		<property name="jobDetail" ref="videoGroupReloadJob" />
 		<property name="cronExpression" value="0 30 1,12 * * ?" />
 	</bean>
+	-->
+	
 
 	<!-- scheduler -->
+	<!--
 	<bean id="scheduler"
 		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 		<property name="triggers">
@@ -83,12 +96,12 @@
 				<ref local="adSlotTrigger" />
 				<ref local="adTypeTrigger" />
 				<ref local="segmentTrigger" />
-				<!-- <ref local="videoGroupTrigger"/> -->
 			</list>
 		</property>
 		<property name="autoStartup">
 			<value>false</value>
 		</property>
 	</bean>
+	-->
 
 </beans>	

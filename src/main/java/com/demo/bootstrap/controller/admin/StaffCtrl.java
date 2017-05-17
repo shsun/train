@@ -31,8 +31,8 @@ public class StaffCtrl {
 	private StaffMapper staffMapper;
 	
 	
-    @Autowired
-    protected RedisTemplate<Serializable, Serializable> redisTemplate;
+    // @Autowired
+    // protected RedisTemplate<Serializable, Serializable> redisTemplate;
 
 	
 	/**
