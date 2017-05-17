@@ -22,11 +22,11 @@
 		class="com.youdo.spring.beans.factory.config.CustomizedPropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
-				<value>classpath:systemconfig.properties</value>
-				<value>classpath:jdbc_mysql_debug.properties</value>												
-				<value>classpath:redis_single_debug.properties</value>				
+				<value>classpath:conf/systemconfig.properties</value>
+				<value>classpath:conf/db/jdbc_mysql_debug.properties</value>												
+				<value>classpath:conf/redis/redis_single_debug.properties</value>				
 				<!--
-				<value>classpath:redis_cluster_debug.properties</value>
+				<value>classpath:conf/redis/redis_cluster_debug.properties</value>
 				-->
 			</list>
 		</property>
