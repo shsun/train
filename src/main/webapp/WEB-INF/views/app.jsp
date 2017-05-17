@@ -92,7 +92,7 @@
 			                        <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> 设置 <b class="caret"></b>
 			                    </a>
 			                    <ul class="dropdown-menu">
-			                    	<li><a href="#accordion">无我仙人 你好</a></li>
+			                    	<li><a href="#accordion">张三 你好</a></li>
 			                    	<li role="separator" class="divider"></li>
 			                        <li><a href="#">帮助</a></li>
 			                        <li><a href="#">反馈</a></li>
