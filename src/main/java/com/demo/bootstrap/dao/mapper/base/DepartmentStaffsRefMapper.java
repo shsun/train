@@ -1,7 +1,7 @@
 package com.demo.bootstrap.dao.mapper.base;
 
-import com.ac.base.dao.BaseMapper;
 import com.demo.bootstrap.dao.entity.DepartmentStaffsRefEty;
+import com.youdo.dao.XBaseMapper;
 
-public interface DepartmentStaffsRefMapper extends BaseMapper<DepartmentStaffsRefEty> {
+public interface DepartmentStaffsRefMapper extends XBaseMapper<DepartmentStaffsRefEty> {
 }

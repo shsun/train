@@ -1,8 +1,8 @@
 package com.demo.bootstrap.dao.entity;
 
-import com.ac.base.dao.BaseEntity;
+import com.youdo.dao.XBaseEntity;
 
-public class DepartmentStaffsRefEty extends BaseEntity {
+public class DepartmentStaffsRefEty extends XBaseEntity {
 	private Integer iD;	//ID
 	private Integer departmentId;	//客户ID
 	private Integer staffId;	//用户ID

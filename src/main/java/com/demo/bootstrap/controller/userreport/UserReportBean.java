@@ -2,7 +2,7 @@ package com.demo.bootstrap.controller.userreport;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class UserReportBean extends com.ac.base.dao.BaseEntity {
+public class UserReportBean extends com.youdo.dao.XBaseEntity {
 	private Integer id;	//ID
 	private String name;	//员工名称
 	private Integer age;	//年龄

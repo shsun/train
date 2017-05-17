@@ -40,6 +40,16 @@
 		<load-on-startup>1</load-on-startup>
 		<async-supported>true</async-supported>
 	</servlet>
+
+	<servlet>
+		<servlet-name>log4j-init</servlet-name>
+		<servlet-class>com.demo.bootstrap.Log4jInitServlet</servlet-class>
+		<init-param>
+			<param-name>log4j</param-name>
+			<param-value>WEB-INF/classes/conf/log/log4j.properties</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>springmvc</servlet-name>

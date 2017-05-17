@@ -1,5 +1,5 @@
 package com.demo.bootstrap.controller.userreport;
-public class UserReportForm extends com.ac.base.dao.BaseEntity {
+public class UserReportForm extends com.youdo.dao.XBaseEntity {
 	private Integer id;	//ID
 	private String name;	//员工名称
 	private java.util.Date birthday;	//员工生日

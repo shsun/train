@@ -1,11 +1,9 @@
 package com.demo.bootstrap.dao.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.youdo.dao.XBaseEntity;
 
-
-import com.ac.base.dao.BaseEntity;
-
-public class StaffEty extends BaseEntity {
+public class StaffEty extends XBaseEntity {
 	private Integer id;	//ID
 	private String name;	//员工名称
 	private Integer age;	//年龄

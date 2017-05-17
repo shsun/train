@@ -1,8 +1,14 @@
-package com.ac.base.dao;
+package com.youdo.dao;
+
 import com.youdo.utils.XExtLimit;
 
-public class BaseEntity {
-	
+/**
+ * 
+ * @author shsun
+ *
+ */
+public class XBaseEntity {
+
 	private XExtLimit extLimit;
 
 	public XExtLimit getExtLimit() {
@@ -12,6 +18,4 @@ public class BaseEntity {
 	public void setExtLimit(XExtLimit extLimit) {
 		this.extLimit = extLimit;
 	}
-	
-	
 }
