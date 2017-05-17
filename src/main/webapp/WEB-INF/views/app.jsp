@@ -110,8 +110,8 @@
 						<img alt="" class="img-circle" src="${ctx}/resources/images/ac.ico">
 					</div>
 					<div class="pull-left info">
-						<p>鞍山比特科技</p>
-						<p>bitln@126.com</p>
+						<p>xyz信息技术</p>
+						<p>xyz@126.com</p>
 					</div>
 				</div>
 				<div ng-style="sideMenuStyle" style="overflow-y: auto;overflow-x: hidden">
