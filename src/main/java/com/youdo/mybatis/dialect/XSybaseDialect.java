@@ -1,6 +1,6 @@
 package com.youdo.mybatis.dialect;
 
-public class SybaseDialect extends Dialect {
+public class XSybaseDialect extends XDialect {
 
     public boolean supportsLimit() {
         return false;

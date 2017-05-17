@@ -3,7 +3,7 @@ package com.youdo.mybatis.dialect;
 /**
  * 
  */
-public class PostgreSQLDialect extends Dialect {
+public class XPostgreSQLDialect extends XDialect {
 
     public boolean supportsLimit() {
         return true;

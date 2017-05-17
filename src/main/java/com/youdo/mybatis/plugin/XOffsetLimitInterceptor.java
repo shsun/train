@@ -16,7 +16,7 @@ import org.apache.ibatis.plugin.Signature;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 
-import com.youdo.mybatis.dialect.Dialect;
+import com.youdo.mybatis.dialect.XDialect;
 
 /**
  * <pre>
@@ -29,14 +29,14 @@ import com.youdo.mybatis.dialect.Dialect;
  */
 @Intercepts({ @Signature(type = Executor.class, method = "query", args = { MappedStatement.class, Object.class, RowBounds.class,
 		ResultHandler.class }) })
-public abstract class OffsetLimitInterceptor implements Interceptor {
+public abstract class XOffsetLimitInterceptor implements Interceptor {
 	
 	// private static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(OffsetLimitInterceptor.class);
 	
 	private static int MAPPED_STATEMENT_INDEX = 0;
 	private static int PARAMETER_INDEX = 1;
 	private static int ROWBOUNDS_INDEX = 2;
-	private Dialect dialect;
+	private XDialect dialect;
 	
 	/**
 	 * 
@@ -137,7 +137,7 @@ public abstract class OffsetLimitInterceptor implements Interceptor {
 	public void setProperties(Properties properties) {
 		String dialectClass = properties.getProperty("dialectClass");
 		try {
-			dialect = (Dialect) Class.forName(dialectClass).newInstance();
+			dialect = (XDialect) Class.forName(dialectClass).newInstance();
 		} catch (Exception e) {
 			throw new IllegalArgumentException("cannot create dialect instance by dialectClass:" + dialectClass, e);
 		}

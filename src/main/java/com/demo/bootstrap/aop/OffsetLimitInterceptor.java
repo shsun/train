@@ -12,7 +12,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 
 // import com.youdo.log4j.YouDoLevel;
-import com.youdo.spring.beans.factory.config.CustomizedPropertyPlaceholderConfigurer;
+import com.youdo.spring.beans.factory.config.XCustomizedPropertyPlaceholderConfigurer;
 //import com.yk.addata.adstat2.support.vo.ErrorDescriptor;
 //import com.yk.addata.adstat2.vo.base.ApplicationSharedObject;
 //import com.yk.addata.adstat2.vo.base.ISqlParameterSource;
@@ -24,14 +24,14 @@ import com.youdo.spring.beans.factory.config.CustomizedPropertyPlaceholderConfig
  */
 @Intercepts({ @Signature(type = Executor.class, method = "query", args = { MappedStatement.class, Object.class,
 		RowBounds.class, ResultHandler.class }) })
-public class OffsetLimitInterceptor extends com.youdo.mybatis.plugin.OffsetLimitInterceptor {
+public class OffsetLimitInterceptor extends com.youdo.mybatis.plugin.XOffsetLimitInterceptor {
 
 	private static final String RELEASE_MODE = "release";
 
 	// static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(OffsetLimitInterceptor.class);
 
 	@Autowired
-	private CustomizedPropertyPlaceholderConfigurer propertyConfigurer;
+	private XCustomizedPropertyPlaceholderConfigurer propertyConfigurer;
 
 	/**
 	 * 

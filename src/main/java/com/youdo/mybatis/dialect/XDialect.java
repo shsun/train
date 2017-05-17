@@ -3,7 +3,7 @@ package com.youdo.mybatis.dialect;
 /**
  * 类似hibernate的Dialect,但只精简出分页部分
  */
-public abstract class Dialect {
+public abstract class XDialect {
 
     public abstract boolean supportsLimit();
 

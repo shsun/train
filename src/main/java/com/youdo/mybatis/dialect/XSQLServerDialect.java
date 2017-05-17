@@ -1,6 +1,6 @@
 package com.youdo.mybatis.dialect;
 
-public class SQLServerDialect extends Dialect {
+public class XSQLServerDialect extends XDialect {
 
     public boolean supportsLimitOffset() {
         return false;

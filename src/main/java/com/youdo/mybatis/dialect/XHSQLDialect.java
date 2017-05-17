@@ -3,7 +3,7 @@ package com.youdo.mybatis.dialect;
 /**
  * Dialect for HSQLDB
  */
-public class HSQLDialect extends Dialect {
+public class XHSQLDialect extends XDialect {
 
     public boolean supportsLimit() {
         return true;

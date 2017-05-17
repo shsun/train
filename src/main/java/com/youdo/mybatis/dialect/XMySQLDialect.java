@@ -3,7 +3,7 @@ package com.youdo.mybatis.dialect;
 /**
  * 
  */
-public class MySQLDialect extends Dialect {
+public class XMySQLDialect extends XDialect {
 
     public boolean supportsLimitOffset() {
         return true;

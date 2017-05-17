@@ -13,7 +13,7 @@ import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
  * @author shsun
  * 
  */
-public class CustomizedPropertyPlaceholderConfigurer extends PropertyPlaceholderConfigurer {
+public class XCustomizedPropertyPlaceholderConfigurer extends PropertyPlaceholderConfigurer {
 
 	private static Map<String, Object> theApplicationContextPropertiesMap;
 

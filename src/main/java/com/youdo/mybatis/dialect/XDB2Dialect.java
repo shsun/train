@@ -3,7 +3,7 @@ package com.youdo.mybatis.dialect;
 /**
  * 
  */
-public class DB2Dialect extends Dialect {
+public class XDB2Dialect extends XDialect {
 
     public boolean supportsLimit() {
         return true;

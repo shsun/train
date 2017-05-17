@@ -19,7 +19,7 @@
 
 
 	<bean id="propertyConfigurer"
-		class="com.youdo.spring.beans.factory.config.CustomizedPropertyPlaceholderConfigurer">
+		class="com.youdo.spring.beans.factory.config.XCustomizedPropertyPlaceholderConfigurer">
 		<property name="locations">
 			<list>
 				<value>classpath:conf/systemconfig.properties</value>
