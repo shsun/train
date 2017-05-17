@@ -6,6 +6,7 @@
 	<cache eviction="LRU" flushInterval="100000" size="10000"/>
 	-->
 	
+	
 	<insert id="insert" parameterType="com.demo.dao.entity.StaffEty">
 		insert into staff(
 			id,name,age,birthday,email)

@@ -1,63 +1,57 @@
 package base.redis;
 
 import java.util.concurrent.locks.ReadWriteLock;
-import org.apache.ibatis.cache.Cache;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
+import org.apache.ibatis.cache.Cache;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.data.redis.connection.jedis.JedisConnection;
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializer;
+
+import redis.clients.jedis.exceptions.JedisConnectionException;
 
 /**
- * Cache adapter for Redis.
  * 
- * @author Eduardo Macarron
+ * @author shsun
+ *
  */
-public final class RedisCache implements Cache {
+public class RedisCache implements Cache {
+	private static final Logger logger = LoggerFactory.getLogger(RedisCache.class);
 
-	private static JedisPool pool;
+	private static JedisConnectionFactory jedisConnectionFactory;
 
-	private final ReadWriteLock readWriteLock = new DummyReadWriteLock();
 	private final String id;
 
-	private final Integer expireSeconds;
+	/**
+	 * The {@code ReadWriteLock}.
+	 */
+	private final ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
 
 	public RedisCache(final String id) {
 		if (id == null) {
 			throw new IllegalArgumentException("Cache instances require an ID");
 		}
+		logger.debug("MybatisRedisCache:id=" + id);
 		this.id = id;
-		final RedisConfig redisConfig = RedisConfigurationBuilder.getInstance().parseConfiguration();
-		// pool = new JedisPool(redisConfig, redisConfig.getHost(),
-		// redisConfig.getPort(),
-		// redisConfig.getConnectionTimeout(), redisConfig.getSoTimeout(),
-		// redisConfig.getPassword(),
-		// redisConfig.getDatabase(), redisConfig.getClientName());
-
-		pool = new JedisPool(redisConfig, redisConfig.getHost(), redisConfig.getPort(),
-				redisConfig.getConnectionTimeout(), redisConfig.getPassword());
-
-		expireSeconds = redisConfig.getSettings().get(id) * 60;
 	}
 
 	@Override
 	public void clear() {
-		execute(new RedisCallback() {
-			@Override
-			public Object doWithRedis(Jedis jedis) {
-				// jedis.del(id.toString());
-				throw new UnsupportedOperationException("not support redis-cache getsize method.");
-				// return null;
-			}
-		});
-
-	}
-
-	private Object execute(RedisCallback callback) {
-		final Jedis jedis = pool.getResource();
+		JedisConnection connection = null;
 		try {
-			return callback.doWithRedis(jedis);
+			connection = jedisConnectionFactory.getConnection();
+			// clear all
+			connection.flushDb();
+			connection.flushAll();
+		} catch (JedisConnectionException e) {
+			e.printStackTrace();
 		} finally {
-			// close????
-			jedis.quit();
+			if (connection != null) {
+				connection.close();
+			}
 		}
 	}
 
@@ -67,67 +61,85 @@ public final class RedisCache implements Cache {
 	}
 
 	@Override
-	public Object getObject(final Object key) {
-		return execute(new RedisCallback() {
-			@Override
-			public Object doWithRedis(Jedis jedis) {
-				// return
-				// SerializeUtil.unserialize(jedis.hget(id.toString().getBytes(),
-				// key.toString().getBytes()));
-				return SerializeUtil.unserialize(jedis.get(key.toString().getBytes()));
+	public Object getObject(Object key) {
+		Object result = null;
+		JedisConnection connection = null;
+		try {
+			connection = jedisConnectionFactory.getConnection();
+			// 借用spring_data_redis.jar中的JdkSerializationRedisSerializer.class
+			RedisSerializer<Object> serializer = new JdkSerializationRedisSerializer();
+			// 利用其反序列化方法获取值
+			result = serializer.deserialize(connection.get(serializer.serialize(key)));
+		} catch (JedisConnectionException e) {
+			e.printStackTrace();
+		} finally {
+			if (connection != null) {
+				connection.close();
 			}
-		});
+		}
+		return result;
 	}
 
 	@Override
 	public ReadWriteLock getReadWriteLock() {
-		return readWriteLock;
+		return this.readWriteLock;
 	}
 
 	@Override
 	public int getSize() {
-		return (Integer) execute(new RedisCallback() {
-			@Override
-			public Object doWithRedis(Jedis jedis) {
-				throw new UnsupportedOperationException("not support redis-cache getsize method.");
+		int result = 0;
+		JedisConnection connection = null;
+		try {
+			connection = jedisConnectionFactory.getConnection();
+			result = Integer.valueOf(connection.dbSize().toString());
+		} catch (JedisConnectionException e) {
+			e.printStackTrace();
+		} finally {
+			if (connection != null) {
+				connection.close();
 			}
-		});
+		}
+		return result;
 	}
 
 	@Override
-	public void putObject(final Object key, final Object value) {
-		execute(new RedisCallback() {
-			@Override
-			public Object doWithRedis(Jedis jedis) {
-				System.out.println("缓存----------------:" + key);
-				jedis.set(key.toString().getBytes(), SerializeUtil.serialize(value));
-				if (expireSeconds > 0) {
-					jedis.expire(key.toString().getBytes(), expireSeconds);
-				}
-				// jedis.hset(id.toString().getBytes(),
-				// key.toString().getBytes(),
-				// SerializeUtil.serialize(value));
-				return null;
+	public void putObject(Object key, Object value) {
+		JedisConnection connection = null;
+		try {
+			logger.info(">>>>>>>>>>>>>>>>>>>>>>>>putObject:" + key + "=" + value);
+			connection = jedisConnectionFactory.getConnection();
+			// 借用spring_data_redis.jar中的JdkSerializationRedisSerializer.class
+			RedisSerializer<Object> serializer = new JdkSerializationRedisSerializer();
+			// 利用其序列化方法将数据写入redis服务的缓存中
+			connection.set(serializer.serialize(key), serializer.serialize(value));
+		} catch (JedisConnectionException e) {
+			e.printStackTrace();
+		} finally {
+			if (connection != null) {
+				connection.close();
 			}
-		});
+		}
 	}
 
 	@Override
-	public Object removeObject(final Object key) {
-		return execute(new RedisCallback() {
-			@Override
-			public Object doWithRedis(Jedis jedis) {
-				// return jedis.hdel(id.toString(), key.toString());
-				// return jedis.del(key.toString());
-
-				throw new UnsupportedOperationException("not support redis-cache getsize method.");
+	public Object removeObject(Object key) {
+		JedisConnection connection = null;
+		Object result = null;
+		try {
+			connection = jedisConnectionFactory.getConnection();
+			RedisSerializer<Object> serializer = new JdkSerializationRedisSerializer();
+			result = connection.expire(serializer.serialize(key), 0);
+		} catch (JedisConnectionException e) {
+			e.printStackTrace();
+		} finally {
+			if (connection != null) {
+				connection.close();
 			}
-		});
+		}
+		return result;
 	}
 
-	@Override
-	public String toString() {
-		return "Redis {" + id + "}";
+	public static void setJedisConnectionFactory(JedisConnectionFactory jedisConnectionFactory) {
+		RedisCache.jedisConnectionFactory = jedisConnectionFactory;
 	}
-
 }
