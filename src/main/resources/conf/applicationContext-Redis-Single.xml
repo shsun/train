@@ -29,7 +29,14 @@
 		<property name="password" value="${redis.server.password}" />
 		<property name="poolConfig" ref="jedisPoolConfig" />
 	</bean>
-
+	
+	
+    <!-- 使用中间类解决RedisCache.jedisConnectionFactory的静态注入，从而使MyBatis实现第三方缓存 -->    
+    <bean id="redisCacheTransfer" class="base.redis.RedisCacheTransfer">
+        <property name="jedisConnectionFactory" ref="jedisConnectionFactory"/>
+    </bean>     
+    
+    
 	<bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate">
 		<property name="connectionFactory" ref="jedisConnectionFactory" />
 	</bean>
