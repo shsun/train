@@ -1,11 +1,11 @@
-package com.ac.util;
+package com.youdo.utils;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-public class SessionUtil {
+public class XSessionUtil {
 	
 	public static void login(String userName) {
 		getSession().setAttribute("SessionUser", userName);

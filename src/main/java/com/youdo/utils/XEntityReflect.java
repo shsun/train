@@ -1,4 +1,4 @@
-package com.ac.util;
+package com.youdo.utils;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
@@ -14,9 +14,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-public class EntityReflect<T> {
+public class XEntityReflect<T> {
 	
-	private static Logger logger = LogManager.getLogger(EntityReflect.class);
+	private static Logger logger = LogManager.getLogger(XEntityReflect.class);
 	
 	public static Object getObjectProperty(Object obj, String property) {
 		if(property == null || property.trim().equals(""))

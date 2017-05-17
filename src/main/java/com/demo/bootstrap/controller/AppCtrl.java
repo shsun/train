@@ -12,24 +12,23 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-
-import com.ac.util.SessionUtil;
-import com.ac.util.jsonresult.JsonResult;
-import com.ac.util.jsonresult.JsonResultFactory;
+import com.youdo.utils.XSessionUtil;
+import com.youdo.utils.jsonresult.XJsonResult;
+import com.youdo.utils.jsonresult.XJsonResultFactory;
 
 @Controller
 public class AppCtrl {
 	
 	@RequestMapping(value="/sys/login")
-	public @ResponseBody JsonResult login(@RequestBody Map<String, String> paraMap) {
+	public @ResponseBody XJsonResult login(@RequestBody Map<String, String> paraMap) {
 		String userNmae = paraMap.get("username");
-		SessionUtil.login(userNmae);
-		return JsonResultFactory.success();
+		XSessionUtil.login(userNmae);
+		return XJsonResultFactory.success();
 	}
 	
 	@RequestMapping(value="/sys/logout")
 	public String login() {
-		SessionUtil.logout();
+		XSessionUtil.logout();
 		return "redirect:/login";
 	}
 	

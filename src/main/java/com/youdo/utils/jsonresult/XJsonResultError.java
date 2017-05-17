@@ -1,14 +1,14 @@
-package com.ac.util.jsonresult;
+package com.youdo.utils.jsonresult;
 
-public class JsonResultError implements JsonResult {
+public class XJsonResultError implements XJsonResult {
 	
 	private String info = "";
 	private String result = "error";
 	private boolean success = true;
 	
-	public JsonResultError() {}
+	public XJsonResultError() {}
 	
-	public JsonResultError(String info) {
+	public XJsonResultError(String info) {
 		this.info = info;
 	}
 	

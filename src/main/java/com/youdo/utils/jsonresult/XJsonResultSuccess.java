@@ -1,15 +1,15 @@
-package com.ac.util.jsonresult;
+package com.youdo.utils.jsonresult;
 
-public class JsonResultSuccess<T> implements JsonResult {
+public class XJsonResultSuccess<T> implements XJsonResult {
 public T data;
 	
 	private String result = "success";
 	private boolean success = true;
 	
-	public JsonResultSuccess(T bean) {
+	public XJsonResultSuccess(T bean) {
 		this.data = bean;
 	}
-	public JsonResultSuccess() {
+	public XJsonResultSuccess() {
 	}
 	public T getData() {
 		return data;

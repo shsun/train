@@ -1,9 +1,9 @@
-package com.ac.util;
+package com.youdo.utils;
 
 import java.io.Serializable;
 import java.util.regex.Pattern;
 
-public class ExtLimit implements Serializable {
+public class XExtLimit implements Serializable {
 	private static final long serialVersionUID = 1L;
 	static String reg = "(?:')|(?:--)|(/\\*(?:.|[\\n\\r])*?\\*/)|(\\b(select|update|and|or|delete|insert|trancate|char|into|substr|ascii|declare|exec|count|master|into|drop|execute)\\b)"; 
 	static Pattern sqlPattern = Pattern.compile(reg, Pattern.CASE_INSENSITIVE);

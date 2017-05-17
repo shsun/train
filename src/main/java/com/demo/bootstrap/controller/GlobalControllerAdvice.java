@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-import com.ac.util.AjaxOut;
-import com.ac.util.jsonresult.JsonResult;
-import com.ac.util.jsonresult.JsonResultFactory;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import com.youdo.utils.XAjaxOut;
+import com.youdo.utils.jsonresult.XJsonResult;
+import com.youdo.utils.jsonresult.XJsonResultFactory;
 
 @ControllerAdvice
 @EnableWebMvc
@@ -26,7 +26,7 @@ public class GlobalControllerAdvice {
 	public @ResponseBody void handle(Exception e, HttpServletResponse response) {
 		logger.error(e.getMessage(), e);
 		
-		JsonResult re = JsonResultFactory.error(e.getMessage());
+		XJsonResult re = XJsonResultFactory.error(e.getMessage());
 		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
 		String json = "";
 		try {
@@ -34,7 +34,7 @@ public class GlobalControllerAdvice {
 		} catch (JsonProcessingException ex) {
 			logger.error(ex);
 		}
-		AjaxOut.responseText(response, json);
+		XAjaxOut.responseText(response, json);
 	}
 
 }

@@ -1,20 +1,20 @@
-package com.ac.util.jsonresult;
+package com.youdo.utils.jsonresult;
 
 import java.util.List;
 
-public class ExtGrid<T> implements JsonResult {
+public class XExtGrid<T> implements XJsonResult {
 	private List<T> invdata;
 	private int total;
 	
-	public ExtGrid() {
+	public XExtGrid() {
 	}
 	
-	public ExtGrid(List<T> invdata) {
+	public XExtGrid(List<T> invdata) {
 		this.invdata = invdata;
 		this.total = invdata.size();
 	}
 	
-	public ExtGrid(List<T> invdata, int total) {
+	public XExtGrid(List<T> invdata, int total) {
 		this.invdata = invdata;
 		this.total = total;
 	}

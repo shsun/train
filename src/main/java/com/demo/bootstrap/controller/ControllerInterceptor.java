@@ -15,9 +15,9 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.ac.util.AjaxOut;
-import com.ac.util.SessionUtil;
 import com.google.common.collect.Lists;
+import com.youdo.utils.XAjaxOut;
+import com.youdo.utils.XSessionUtil;
 
 public class ControllerInterceptor implements HandlerInterceptor {
 
@@ -73,12 +73,12 @@ public class ControllerInterceptor implements HandlerInterceptor {
 	private boolean isUserLogined() {
 		//return SessionUtil.getLoginUser() != null && SessionUtil.getLoginUser().getStatus() == 1;
 		//FIXME 需要将此处改为用户登录的限制即可
-		return SessionUtil.getLoginUser() != null;
+		return XSessionUtil.getLoginUser() != null;
 	}
 	
 	private void sendRedirectTo(HttpServletRequest request, HttpServletResponse response, String type, String url) {
 		try {
-			SessionUtil.logout();
+			XSessionUtil.logout();
 			String httpTag = request.getHeader("Request-By");
 			if(httpTag != null && httpTag.equals("AgHttp")) {
 				Map<String, Object> obj = new HashMap<String, Object>();
@@ -86,7 +86,7 @@ public class ControllerInterceptor implements HandlerInterceptor {
 				obj.put("result", type);  
 				obj.put("info","登录超时或者权限被收回！请重新登录！");
 				obj.put("redirectURL", request.getContextPath() + url);   
-				AjaxOut.responseJson(response, obj);
+				XAjaxOut.responseJson(response, obj);
 			}
 			else {
 				response.sendRedirect(request.getContextPath() + url);

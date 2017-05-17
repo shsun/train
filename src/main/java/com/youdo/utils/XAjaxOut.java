@@ -1,4 +1,4 @@
-package com.ac.util;
+package com.youdo.utils;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,9 +13,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.google.gson.Gson;
 
-public class AjaxOut {
+public class XAjaxOut {
 	
-	private static Logger logger = LogManager.getLogger(AjaxOut.class);
+	private static Logger logger = LogManager.getLogger(XAjaxOut.class);
 	
 	public static void responseText(HttpServletResponse response, Object obj) {
 		ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();

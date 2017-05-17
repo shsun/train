@@ -8,13 +8,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.ac.util.jsonresult.JsonResult;
-import com.ac.util.jsonresult.JsonResultFactory;
-
-
 import com.demo.bootstrap.controller.userreport.UserReportForm;
 import com.demo.bootstrap.controller.userreport.UserReportBean;
 import com.demo.bootstrap.dao.mapper.module.UserReportMapper;
+import com.youdo.utils.jsonresult.XJsonResult;
+import com.youdo.utils.jsonresult.XJsonResultFactory;
 
 /**
  * 员工报表
@@ -31,9 +29,9 @@ public class UserReportCtrl {
 	 * 查询
 	 */
 	@RequestMapping(value="search")
-	public @ResponseBody JsonResult search(@RequestBody UserReportForm userReportForm) throws Exception {
+	public @ResponseBody XJsonResult search(@RequestBody UserReportForm userReportForm) throws Exception {
 		int count = userReportMapper.selectUserReportBeanCount(userReportForm);
 		List<UserReportBean> list = userReportMapper.selectUserReportBeanByLimit(userReportForm);
-		return JsonResultFactory.extgrid(list, count);
+		return XJsonResultFactory.extgrid(list, count);
 	}
 }
