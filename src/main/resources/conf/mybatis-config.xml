@@ -9,8 +9,8 @@
 	</properties>
 	
 	 <plugins>
-	 	<plugin interceptor="com.youku.addata.adstat2.aop.OffsetLimitInterceptor">  
-            <property name="dialectClass" value="com.youdo.mybatis.dialect.OracleDialect"/>  
+	 	<plugin interceptor="com.demo.bootstrap.aop.OffsetLimitInterceptor">  
+            <property name="dialectClass" value="com.youdo.mybatis.dialect.XMySQLDialect"/>  
         </plugin>  
     </plugins>
     

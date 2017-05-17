@@ -21,8 +21,8 @@ import com.youdo.mybatis.dialect.XDialect;
 /**
  * <pre>
  * 		<plugins>
- * 			<plugin interceptor="com.youdo.mybatis.plugin.OffsetLimitInterceptor">
- * 				<property name="dialectClass" value="com.youdo.mybatis.dialect.OracleDialect"/>
+ * 			<plugin interceptor="com.youdo.mybatis.plugin.XOffsetLimitInterceptor">
+ * 				<property name="dialectClass" value="com.youdo.mybatis.dialect.XOracleDialect"/>
  * 			</plugin>
  * 		</plugins>
  * </pre>
