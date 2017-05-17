@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.demo.bootstrap.dao.entity.StaffEty;
 import com.demo.bootstrap.dao.mapper.base.StaffMapper;
-import com.youdo.utils.jsonresult.XJsonResult;
-import com.youdo.utils.jsonresult.XJsonResultFactory;
+import base.utils.jsonresult.XJsonResult;
+import base.utils.jsonresult.XJsonResultFactory;
 
 /**
  * 员工管理

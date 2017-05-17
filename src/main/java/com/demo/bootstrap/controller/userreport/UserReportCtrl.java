@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.demo.bootstrap.controller.userreport.UserReportForm;
 import com.demo.bootstrap.controller.userreport.UserReportBean;
 import com.demo.bootstrap.dao.mapper.module.UserReportMapper;
-import com.youdo.utils.jsonresult.XJsonResult;
-import com.youdo.utils.jsonresult.XJsonResultFactory;
+import base.utils.jsonresult.XJsonResult;
+import base.utils.jsonresult.XJsonResultFactory;
 
 /**
  * 员工报表

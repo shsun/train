@@ -16,8 +16,8 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.common.collect.Lists;
-import com.youdo.utils.XAjaxOut;
-import com.youdo.utils.XSessionUtil;
+import base.utils.XAjaxOut;
+import base.utils.XSessionUtil;
 
 public class ControllerInterceptor implements HandlerInterceptor {
 

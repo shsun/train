@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.demo.bootstrap.dao.entity.DepartmentEty;
 import com.demo.bootstrap.dao.mapper.base.DepartmentMapper;
-import com.youdo.utils.jsonresult.XJsonResult;
-import com.youdo.utils.jsonresult.XJsonResultFactory;
+import base.utils.jsonresult.XJsonResult;
+import base.utils.jsonresult.XJsonResultFactory;
 
 /**
  * 部门管理

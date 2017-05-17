@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import com.youdo.utils.XSessionUtil;
-import com.youdo.utils.jsonresult.XJsonResult;
-import com.youdo.utils.jsonresult.XJsonResultFactory;
+import base.utils.XSessionUtil;
+import base.utils.jsonresult.XJsonResult;
+import base.utils.jsonresult.XJsonResultFactory;
 
 @Controller
 public class AppCtrl {

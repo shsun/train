@@ -12,9 +12,9 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import com.youdo.utils.XAjaxOut;
-import com.youdo.utils.jsonresult.XJsonResult;
-import com.youdo.utils.jsonresult.XJsonResultFactory;
+import base.utils.XAjaxOut;
+import base.utils.jsonresult.XJsonResult;
+import base.utils.jsonresult.XJsonResultFactory;
 
 @ControllerAdvice
 @EnableWebMvc

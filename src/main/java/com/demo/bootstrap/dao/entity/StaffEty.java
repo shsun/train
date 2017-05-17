@@ -1,7 +1,7 @@
 package com.demo.bootstrap.dao.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.youdo.dao.XBaseEntity;
+import base.dao.XBaseEntity;
 
 public class StaffEty extends XBaseEntity {
 	private Integer id;	//ID

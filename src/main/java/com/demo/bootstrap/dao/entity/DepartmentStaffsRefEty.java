@@ -1,6 +1,6 @@
 package com.demo.bootstrap.dao.entity;
 
-import com.youdo.dao.XBaseEntity;
+import base.dao.XBaseEntity;
 
 public class DepartmentStaffsRefEty extends XBaseEntity {
 	private Integer iD;	//ID

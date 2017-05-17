@@ -20,5 +20,4 @@ public class InitServlet extends HttpServlet {
 		getServletContext().setAttribute("SysVersion", version);
 		super.init();
 	}
-
 }

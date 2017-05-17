@@ -11,8 +11,8 @@ import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 
-// import com.youdo.log4j.YouDoLevel;
-import com.youdo.spring.beans.factory.config.XCustomizedPropertyPlaceholderConfigurer;
+// import base.log4j.YouDoLevel;
+import base.spring.beans.factory.config.XCustomizedPropertyPlaceholderConfigurer;
 //import com.yk.addata.adstat2.support.vo.ErrorDescriptor;
 //import com.yk.addata.adstat2.vo.base.ApplicationSharedObject;
 //import com.yk.addata.adstat2.vo.base.ISqlParameterSource;
@@ -24,7 +24,7 @@ import com.youdo.spring.beans.factory.config.XCustomizedPropertyPlaceholderConfi
  */
 @Intercepts({ @Signature(type = Executor.class, method = "query", args = { MappedStatement.class, Object.class,
 		RowBounds.class, ResultHandler.class }) })
-public class OffsetLimitInterceptor extends com.youdo.mybatis.plugin.XOffsetLimitInterceptor {
+public class OffsetLimitInterceptor extends base.mybatis.plugin.XOffsetLimitInterceptor {
 
 	private static final String RELEASE_MODE = "release";
 
