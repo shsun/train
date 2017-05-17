@@ -5,9 +5,7 @@
 http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd  
 http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-3.2.xsd">
 
-	<description>Jedis Cluster Configuration集群</description>
-	<context:property-placeholder
-		ignore-unresolvable="true" location="classpath:conf/redis/redis-cluster_debug.properties" />
+	<description>Jedis Cluster Configuration</description>
 
 	<bean id="redisClusterConfiguration"
 		class="org.springframework.data.redis.connection.RedisClusterConfiguration">

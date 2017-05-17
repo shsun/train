@@ -17,6 +17,22 @@
 	<context:component-scan base-package="com.ac.base.services" />
 	<context:component-scan base-package="com.demo.bootstrap.services" />
 
+
+	<bean id="propertyConfigurer"
+		class="com.youdo.spring.beans.factory.config.CustomizedPropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:systemconfig.properties</value>
+				<value>classpath:jdbc-mysql_debug.properties</value>
+				<value>classpath:redis-single_debug.properties</value>
+				<!--
+				<value>classpath:redis-cluster_debug.properties</value>
+				-->
+			</list>
+		</property>
+	</bean>
+
+
 	<import resource="applicationContext-Mybatis.xml" />
 
 	<import resource="applicationContext-Redis-Single.xml" />
