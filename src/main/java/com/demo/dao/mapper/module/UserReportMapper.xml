@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.demo.dao.mapper.module.UserReportMapper">
+	
+	<cache eviction="LRU" flushInterval="100000" size="10000"/>
+	
 	<select id="selectUserReportBeanCount" parameterType="com.demo.controller.userreport.UserReportForm" resultType="int">
 		select count(1) from staff s 
 		LEFT JOIN department_staffs_ref de on s.id = de.staffId
