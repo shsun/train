@@ -1,4 +1,4 @@
-package com.demo.bootstrap.dao.entity;
+package com.demo.dao.entity;
 
 import base.dao.XBaseEntity;
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.demo.bootstrap.dao.mapper.module.UserReportMapper">
-	<select id="selectUserReportBeanCount" parameterType="com.demo.bootstrap.controller.userreport.UserReportForm" resultType="int">
+<mapper namespace="com.demo.dao.mapper.module.UserReportMapper">
+	<select id="selectUserReportBeanCount" parameterType="com.demo.controller.userreport.UserReportForm" resultType="int">
 		select count(1) from staff s 
 		LEFT JOIN department_staffs_ref de on s.id = de.staffId
 		LEFT JOIN department d on de.departmentId = d.id
@@ -11,7 +11,7 @@
 		<if test="birthday != null "> AND s.birthday=#{birthday}</if>
 	</select>
 
-	<select id="selectUserReportBeanByLimit" parameterType="com.demo.bootstrap.controller.userreport.UserReportForm" resultType="com.demo.bootstrap.controller.userreport.UserReportBean">
+	<select id="selectUserReportBeanByLimit" parameterType="com.demo.controller.userreport.UserReportForm" resultType="com.demo.controller.userreport.UserReportBean">
 		select s.id,s.name,s.age,s.birthday,s.email,d.id as departmentId,d.name as departmentName,d.phone,d.address
 		from staff s 
 		LEFT JOIN department_staffs_ref de on s.id = de.staffId

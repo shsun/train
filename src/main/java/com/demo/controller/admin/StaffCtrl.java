@@ -1,4 +1,4 @@
-package com.demo.bootstrap.controller.admin;
+package com.demo.controller.admin;
 
 import java.io.Serializable;
 import java.util.List;
@@ -13,8 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.demo.bootstrap.dao.entity.StaffEty;
-import com.demo.bootstrap.dao.mapper.base.StaffMapper;
+import com.demo.dao.entity.StaffEty;
+import com.demo.dao.mapper.base.StaffMapper;
+
 import base.utils.jsonresult.XJsonResult;
 import base.utils.jsonresult.XJsonResultFactory;
 

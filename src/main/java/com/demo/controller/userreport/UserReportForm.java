@@ -1,16 +1,9 @@
-package com.demo.bootstrap.dao.entity;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import base.dao.XBaseEntity;
-
-public class StaffEty extends XBaseEntity {
+package com.demo.controller.userreport;
+public class UserReportForm extends base.dao.XBaseEntity {
 	private Integer id;	//ID
 	private String name;	//员工名称
-	private Integer age;	//年龄
-
-	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd" , timezone="GMT+8")
 	private java.util.Date birthday;	//员工生日
-	private String email;	//邮箱地址
+
 	/**
 	* 得到 ID
 	* @return Integer
@@ -42,21 +35,6 @@ public class StaffEty extends XBaseEntity {
 	}
 
 	/**
-	* 得到 年龄
-	* @return Integer
-	*/
-	public Integer getAge() {
-		return this.age;
-	}
-	/**
-	 * 设置 年龄
-	 * @param age,  : Integer
-	*/
-	public void setAge(Integer age) {
-		this.age = age;
-	}
-
-	/**
 	* 得到 员工生日
 	* @return java.util.Date
 	*/
@@ -69,21 +47,6 @@ public class StaffEty extends XBaseEntity {
 	*/
 	public void setBirthday(java.util.Date birthday) {
 		this.birthday = birthday;
-	}
-
-	/**
-	* 得到 邮箱地址
-	* @return String
-	*/
-	public String getEmail() {
-		return this.email;
-	}
-	/**
-	 * 设置 邮箱地址
-	 * @param email,  : String
-	*/
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 }

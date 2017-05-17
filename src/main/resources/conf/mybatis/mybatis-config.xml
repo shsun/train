@@ -9,7 +9,7 @@
 	</properties>
 	
 	 <plugins>
-	 	<plugin interceptor="com.demo.bootstrap.aop.OffsetLimitInterceptor">  
+	 	<plugin interceptor="com.demo.aop.OffsetLimitInterceptor">  
             <property name="dialectClass" value="base.mybatis.dialect.XMySQLDialect"/>  
         </plugin>  
     </plugins>

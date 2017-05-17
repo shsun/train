@@ -1,4 +1,4 @@
-package com.demo.bootstrap.controller;
+package com.demo.controller;
 
 import java.util.List;
 import java.util.Map;

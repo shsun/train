@@ -1,4 +1,4 @@
-package com.demo.bootstrap.controller.admin;
+package com.demo.controller.admin;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +8,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.demo.bootstrap.dao.entity.DepartmentEty;
-import com.demo.bootstrap.dao.mapper.base.DepartmentMapper;
+import com.demo.dao.entity.DepartmentEty;
+import com.demo.dao.mapper.base.DepartmentMapper;
+
 import base.utils.jsonresult.XJsonResult;
 import base.utils.jsonresult.XJsonResultFactory;
 

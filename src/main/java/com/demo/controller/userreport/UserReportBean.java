@@ -1,4 +1,4 @@
-package com.demo.bootstrap.controller.userreport;
+package com.demo.controller.userreport;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 

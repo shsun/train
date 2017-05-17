@@ -1,4 +1,4 @@
-package com.demo.bootstrap.controller;
+package com.demo.controller;
 
 import javax.servlet.http.HttpServletResponse;
 
