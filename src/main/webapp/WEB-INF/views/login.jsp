@@ -8,13 +8,13 @@
 <!DOCTYPE html>
 <html lang="zh-CN" ng-app="myApp">
 	<head>
-		<title>BootstrapDemo</title>
+		<title>列车安全系统</title>
 		<link rel="shortcut icon" href="${ctx}/resources/images/flow.png"/>
 		<meta charset="utf-8">
-		<meta name="description" content="BootstrapDemo">
-		<meta name="title" content="BootstrapDemo" />
-		<meta name="keywords" content="BootstrapDemo" />
-		<meta name="description" content="BootstrapDemo" />
+		<meta name="description" content="列车安全系统">
+		<meta name="title" content="列车安全系统" />
+		<meta name="keywords" content="列车安全系统" />
+		<meta name="description" content="列车安全系统" />
 		
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -42,9 +42,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong>BootstrapDemo</strong></h1>
+                            <h1><strong>列车安全系统</strong></h1>
                             <div class="description">
-                            	<p>登录BootstrapDemo!</p>
+                            	<p>登录列车安全系统!</p>
                             </div>
                         </div>
                     </div>

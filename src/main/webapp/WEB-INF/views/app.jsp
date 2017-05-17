@@ -54,7 +54,7 @@
 		<script src="${ctx}/app/app.js?v=${sysVersion}"></script>
 		
 		<script type="text/javascript">
-			var projectName = 'BootstrapDemo';
+			var projectName = '列车安全系统';
 			myApp.config(['$routeProvider',
 	        	function($routeProvider,$routeParams) {
 	          		$routeProvider.
@@ -79,7 +79,7 @@
 					<div class="navbar-header">
 						<span class="navSilderShowSpan pull-left leftNavMenuToggle" ng-show="leftNavLock && isLeftNavShow()" ng-click="toggleLeftNavLock()"><i class="fa fa-outdent" aria-hidden="true"></i></span>
 						<span class="navSilderShowSpan pull-left leftNavMenuToggle" ng-show="!leftNavLock || !isLeftNavShow()" ng-click="openAside()"><i class="fa fa-bars" aria-hidden="true"></i></span>
-						<a role="button" class="navbar-brand" href="${ctx}/#/home">BootstrapDemo</a>
+						<a role="button" class="navbar-brand" href="${ctx}/#/home">列车安全系统</a>
 					</div>
 					<nav class="collapse navbar-collapse bs-navbar-collapse" style="margin-right: 10px;">
 						<ul class="nav navbar-nav navbar-right">
@@ -110,8 +110,8 @@
 						<img alt="" class="img-circle" src="${ctx}/resources/images/ac.ico">
 					</div>
 					<div class="pull-left info">
-						<p>无我仙人</p>
-						<p>autocoding@163.com</p>
+						<p>鞍山比特科技</p>
+						<p>bitln@126.com</p>
 					</div>
 				</div>
 				<div ng-style="sideMenuStyle" style="overflow-y: auto;overflow-x: hidden">
