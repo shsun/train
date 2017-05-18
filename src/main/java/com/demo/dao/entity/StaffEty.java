@@ -3,7 +3,12 @@ package com.demo.dao.entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import base.dao.XBaseEntity;
 
-public class StaffEty extends XBaseEntity {
+public class StaffEty extends XBaseEntity implements java.io.Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Integer id;	//ID
 	private String name;	//员工名称
 	private Integer age;	//年龄

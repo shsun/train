@@ -11,6 +11,12 @@
 
 	<settings>
 		<setting name="cacheEnabled" value="true" />
+		<setting name="multipleResultSetsEnabled" value="true" />
+		<setting name="defaultExecutorType" value="REUSE" />
+		<setting name="lazyLoadingEnabled" value="false" />
+		<setting name="aggressiveLazyLoading" value="true" />
+		<!-- <setting name="enhancementEnabled" value="true"/> -->
+		<setting name="defaultStatementTimeout" value="25000" />
 	</settings>
 
 	<plugins>

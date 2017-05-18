@@ -2,7 +2,12 @@ package com.demo.dao.entity;
 
 import base.dao.XBaseEntity;
 
-public class DepartmentStaffsRefEty extends XBaseEntity {
+public class DepartmentStaffsRefEty extends XBaseEntity implements java.io.Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private Integer iD;	//ID
 	private Integer departmentId;	//客户ID
 	private Integer staffId;	//用户ID

@@ -12,47 +12,28 @@ import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer
 import org.springframework.data.redis.serializer.RedisSerializer;
 
 import redis.clients.jedis.exceptions.JedisConnectionException;
+import org.apache.ibatis.logging.Log;
+import org.apache.ibatis.logging.LogFactory;
+
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
+import redis.clients.jedis.JedisPoolConfig;
 
 /**
- * 
- * @author shsun
- *
+ * @author WHD data 2016年5月22日
  */
 public class RedisCache implements Cache {
-	private static final Logger logger = LoggerFactory.getLogger(RedisCache.class);
-
-	private static JedisConnectionFactory jedisConnectionFactory;
-
-	private final String id;
-
-	/**
-	 * The {@code ReadWriteLock}.
-	 */
+	/** The ReadWriteLock. */
 	private final ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
 
-	public RedisCache(final String id) {
-		if (id == null) {
-			throw new IllegalArgumentException("Cache instances require an ID");
-		}
-		logger.debug("MybatisRedisCache:id=" + id);
-		this.id = id;
-	}
+	private String id;
 
-	@Override
-	public void clear() {
-		JedisConnection connection = null;
-		try {
-			connection = jedisConnectionFactory.getConnection();
-			// clear all
-			connection.flushDb();
-			connection.flushAll();
-		} catch (JedisConnectionException e) {
-			e.printStackTrace();
-		} finally {
-			if (connection != null) {
-				connection.close();
-			}
+	public RedisCache(final String id) {
+		System.out.println("初始化");
+		if (id == null) {
+			throw new IllegalArgumentException("必须传入ID");
 		}
+		this.id = id;
 	}
 
 	@Override
@@ -61,85 +42,158 @@ public class RedisCache implements Cache {
 	}
 
 	@Override
-	public Object getObject(Object key) {
-		Object result = null;
-		JedisConnection connection = null;
-		try {
-			connection = jedisConnectionFactory.getConnection();
-			// 借用spring_data_redis.jar中的JdkSerializationRedisSerializer.class
-			RedisSerializer<Object> serializer = new JdkSerializationRedisSerializer();
-			// 利用其反序列化方法获取值
-			result = serializer.deserialize(connection.get(serializer.serialize(key)));
-		} catch (JedisConnectionException e) {
-			e.printStackTrace();
-		} finally {
-			if (connection != null) {
-				connection.close();
-			}
-		}
-		return result;
-	}
-
-	@Override
-	public ReadWriteLock getReadWriteLock() {
-		return this.readWriteLock;
-	}
-
-	@Override
 	public int getSize() {
+		Jedis jedis = null;
+		JedisPool jedisPool = null;
 		int result = 0;
-		JedisConnection connection = null;
+		boolean borrowOrOprSuccess = true;
 		try {
-			connection = jedisConnectionFactory.getConnection();
-			result = Integer.valueOf(connection.dbSize().toString());
+			jedis = CachePool.getInstance().getJedis();
+			jedisPool = CachePool.getInstance().getJedisPool();
+			result = Integer.valueOf(jedis.dbSize().toString());
 		} catch (JedisConnectionException e) {
-			e.printStackTrace();
+			borrowOrOprSuccess = false;
+			if (jedis != null)
+				jedisPool.returnBrokenResource(jedis);
 		} finally {
-			if (connection != null) {
-				connection.close();
-			}
+			if (borrowOrOprSuccess)
+				jedisPool.returnResource(jedis);
 		}
 		return result;
+
 	}
 
 	@Override
 	public void putObject(Object key, Object value) {
-		JedisConnection connection = null;
+		System.out.println("put key" + key + ", value=" + value);
+		Jedis jedis = null;
+		JedisPool jedisPool = null;
+		boolean borrowOrOprSuccess = true;
 		try {
-			logger.info(">>>>>>>>>>>>>>>>>>>>>>>>putObject:" + key + "=" + value);
-			connection = jedisConnectionFactory.getConnection();
-			// 借用spring_data_redis.jar中的JdkSerializationRedisSerializer.class
-			RedisSerializer<Object> serializer = new JdkSerializationRedisSerializer();
-			// 利用其序列化方法将数据写入redis服务的缓存中
-			connection.set(serializer.serialize(key), serializer.serialize(value));
+			jedis = CachePool.getInstance().getJedis();
+			jedisPool = CachePool.getInstance().getJedisPool();
+			jedis.set(SerializeUtil.serialize(key.hashCode()), SerializeUtil.serialize(value));
 		} catch (JedisConnectionException e) {
-			e.printStackTrace();
+			borrowOrOprSuccess = false;
+			if (jedis != null)
+				jedisPool.returnBrokenResource(jedis);
 		} finally {
-			if (connection != null) {
-				connection.close();
-			}
+			if (borrowOrOprSuccess)
+				jedisPool.returnResource(jedis);
 		}
+
+	}
+
+	@Override
+	public Object getObject(Object key) {
+		System.out.println("get key--"+key);
+		Jedis jedis = null;
+		JedisPool jedisPool = null;
+		Object value = null;
+		boolean borrowOrOprSuccess = true;
+		try {
+			jedis = CachePool.getInstance().getJedis();
+			jedisPool = CachePool.getInstance().getJedisPool();
+			value = SerializeUtil.unserialize(jedis.get(SerializeUtil.serialize(key.hashCode())));
+		} catch (JedisConnectionException e) {
+			borrowOrOprSuccess = false;
+			if (jedis != null)
+				jedisPool.returnBrokenResource(jedis);
+		} finally {
+			if (borrowOrOprSuccess)
+				jedisPool.returnResource(jedis);
+		}
+		return value;
 	}
 
 	@Override
 	public Object removeObject(Object key) {
-		JedisConnection connection = null;
-		Object result = null;
+		System.out.println("remove key 到了设定时间");
+		Jedis jedis = null;
+		JedisPool jedisPool = null;
+		Object value = null;
+		boolean borrowOrOprSuccess = true;
 		try {
-			connection = jedisConnectionFactory.getConnection();
-			RedisSerializer<Object> serializer = new JdkSerializationRedisSerializer();
-			result = connection.expire(serializer.serialize(key), 0);
+			jedis = CachePool.getInstance().getJedis();
+			jedisPool = CachePool.getInstance().getJedisPool();
+			value = jedis.expire(SerializeUtil.serialize(key.hashCode()), 0);
 		} catch (JedisConnectionException e) {
-			e.printStackTrace();
+			borrowOrOprSuccess = false;
+			if (jedis != null)
+				jedisPool.returnBrokenResource(jedis);
 		} finally {
-			if (connection != null) {
-				connection.close();
-			}
+			if (borrowOrOprSuccess)
+				jedisPool.returnResource(jedis);
 		}
-		return result;
+		return value;
 	}
 
-	public static void setJedisConnectionFactory(JedisConnectionFactory jedisConnectionFactory) {
-		RedisCache.jedisConnectionFactory = jedisConnectionFactory;
+	@Override
+	public void clear() {
+		System.out.println("clear all data");
+		Jedis jedis = null;
+		JedisPool jedisPool = null;
+		boolean borrowOrOprSuccess = true;
+		try {
+			jedis = CachePool.getInstance().getJedis();
+			jedisPool = CachePool.getInstance().getJedisPool();
+			jedis.flushDB();
+			jedis.flushAll();
+		} catch (JedisConnectionException e) {
+			borrowOrOprSuccess = false;
+			if (jedis != null)
+				jedisPool.returnBrokenResource(jedis);
+		} finally {
+			if (borrowOrOprSuccess)
+				jedisPool.returnResource(jedis);
+		}
+	}
+
+	@Override
+	public ReadWriteLock getReadWriteLock() {
+		return readWriteLock;
+	}
+
+	public static class CachePool {
+		JedisPool pool;
+		private static final CachePool cachePool = new CachePool();
+
+		public static CachePool getInstance() {
+			return cachePool;
+		}
+
+		private CachePool() {
+			JedisPoolConfig config = new JedisPoolConfig();
+			config.setMaxIdle(100);
+			config.setMaxWait(1000l);
+			/*
+			 * PropertiesLoader pl = new
+			 * PropertiesLoader("classpath:config/redis.properties");
+			 */
+			// jedisPool= new JedisPool(config,"127.0.0.1",6379);
+			pool = new JedisPool(config, "127.0.0.1", 6379);
+		}
+
+		public Jedis getJedis() {
+			Jedis jedis = null;
+			boolean borrowOrOprSuccess = true;
+			try {
+				jedis = pool.getResource();
+			} catch (JedisConnectionException e) {
+				borrowOrOprSuccess = false;
+				if (jedis != null)
+					pool.returnBrokenResource(jedis);
+			} finally {
+				if (borrowOrOprSuccess)
+					pool.returnResource(jedis);
+			}
+			jedis = pool.getResource();
+			return jedis;
+		}
+
+		public JedisPool getJedisPool() {
+			return this.pool;
+		}
+
 	}
 }
