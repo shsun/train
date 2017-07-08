@@ -11,11 +11,7 @@ import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 
-// import base.log4j.YouDoLevel;
 import base.spring.beans.factory.config.XCustomizedPropertyPlaceholderConfigurer;
-//import com.yk.addata.adstat2.support.vo.ErrorDescriptor;
-//import com.yk.addata.adstat2.vo.base.ApplicationSharedObject;
-//import com.yk.addata.adstat2.vo.base.ISqlParameterSource;
 
 /**
  * 
