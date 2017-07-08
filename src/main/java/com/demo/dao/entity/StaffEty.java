@@ -91,4 +91,8 @@ public class StaffEty extends XBaseEntity implements java.io.Serializable {
 		this.email = email;
 	}
 
+	@Override
+	public String toString(){
+		return this.getId()+","+this.getName()+","+this.getAge();
+	}
 }

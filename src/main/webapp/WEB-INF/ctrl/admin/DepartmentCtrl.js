@@ -1,5 +1,5 @@
 angular.module('myApp').controller('DepartmentCtrl', function($scope, $uibModal, $http, $anchorScroll, confirmDialogs){
-	$scope.pagination = {start: 0, limit: 20, maxSize: 8, currentPage: 1, limitOptions:[10,20,50,100]};
+	$scope.pagination = {start: 0, limit: 5, maxSize: 8, currentPage: 1, limitOptions:[5, 10,20,50,100]};
 	$scope.searchForm = {extLimit: $scope.pagination};
 	
 	$scope.search = function() {

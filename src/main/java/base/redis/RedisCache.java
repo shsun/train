@@ -81,7 +81,6 @@ public class RedisCache implements Cache {
             if (borrowOrOprSuccess)
                 jedisPool.returnResource(jedis);
         }
-
     }
 
     @Override
