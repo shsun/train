@@ -29,7 +29,7 @@ public class RedisCache implements Cache {
     private String id;
 
     public RedisCache(final String id) {
-        System.out.println("init RedisCache, id=" + id);
+        System.out.println("RedisCache init RedisCache, id=" + id);
         if (id == null) {
             throw new IllegalArgumentException("必须传入ID");
         }
@@ -65,7 +65,7 @@ public class RedisCache implements Cache {
 
     @Override
     public void putObject(Object key, Object value) {
-        System.out.println("put key" + key + ", value=" + value);
+        System.out.println("RedisCache put key=" + key + ", value=" + value);
         Jedis jedis = null;
         JedisPool jedisPool = null;
         boolean borrowOrOprSuccess = true;
@@ -86,7 +86,7 @@ public class RedisCache implements Cache {
 
     @Override
     public Object getObject(Object key) {
-        System.out.println("get key--" + key);
+        System.out.println("RedisCache get key--" + key);
         Jedis jedis = null;
         JedisPool jedisPool = null;
         Object value = null;
@@ -103,12 +103,13 @@ public class RedisCache implements Cache {
             if (borrowOrOprSuccess)
                 jedisPool.returnResource(jedis);
         }
+        System.out.println("RedisCache get value--" + value);
         return value;
     }
 
     @Override
     public Object removeObject(Object key) {
-        System.out.println("remove key 到了设定时间");
+        System.out.println("RedisCache remove key "+key+", 到了设定时间");
         Jedis jedis = null;
         JedisPool jedisPool = null;
         Object value = null;
@@ -130,7 +131,7 @@ public class RedisCache implements Cache {
 
     @Override
     public void clear() {
-        System.out.println("clear all data");
+        System.out.println("RedisCache clear all data");
         Jedis jedis = null;
         JedisPool jedisPool = null;
         boolean borrowOrOprSuccess = true;

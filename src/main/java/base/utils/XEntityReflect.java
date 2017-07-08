@@ -19,8 +19,9 @@ public class XEntityReflect<T> {
 	private static Logger logger = LogManager.getLogger(XEntityReflect.class);
 	
 	public static Object getObjectProperty(Object obj, String property) {
-		if(property == null || property.trim().equals(""))
-			return "";
+        if (property == null || property.trim().equals("")) {
+            return "";
+        }
 		String method = "get";
 		String ch = property.charAt(0) + "";
 		property = property.replaceFirst(ch, ch.toUpperCase());

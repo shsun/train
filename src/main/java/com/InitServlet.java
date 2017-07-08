@@ -1,5 +1,7 @@
 package com;
 
+import org.apache.log4j.PropertyConfigurator;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -7,7 +9,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
 /**
- * 初始化Servlet设置版本号
  *
  */
 public class InitServlet extends HttpServlet {
@@ -18,6 +19,8 @@ public class InitServlet extends HttpServlet {
     public void init() throws ServletException {
         String version = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
         getServletContext().setAttribute("SysVersion", version);
+
+        PropertyConfigurator.configure(getServletContext().getRealPath("/") + getInitParameter("log4j"));
         super.init();
     }
 }
