@@ -5,6 +5,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import org.apache.ibatis.cache.Cache;
 
+import org.apache.ibatis.cache.CacheKey;
 import redis.clients.jedis.exceptions.JedisConnectionException;
 
 import redis.clients.jedis.Jedis;
@@ -67,11 +68,13 @@ public class RedisCache implements Cache {
             jedis.set(SerializeUtil.serialize(key.hashCode()), SerializeUtil.serialize(value));
         } catch (JedisConnectionException e) {
             borrowOrOprSuccess = false;
-            if (jedis != null)
+            if (jedis != null) {
                 jedisPool.returnBrokenResource(jedis);
+            }
         } finally {
-            if (borrowOrOprSuccess)
+            if (borrowOrOprSuccess) {
                 jedisPool.returnResource(jedis);
+            }
         }
     }
 
@@ -88,11 +91,13 @@ public class RedisCache implements Cache {
             value = SerializeUtil.unserialize(jedis.get(SerializeUtil.serialize(key.hashCode())));
         } catch (JedisConnectionException e) {
             borrowOrOprSuccess = false;
-            if (jedis != null)
+            if (jedis != null) {
                 jedisPool.returnBrokenResource(jedis);
+            }
         } finally {
-            if (borrowOrOprSuccess)
+            if (borrowOrOprSuccess) {
                 jedisPool.returnResource(jedis);
+            }
         }
         System.out.println("RedisCache get value--" + value);
         return value;
