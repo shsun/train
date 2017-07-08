@@ -14,9 +14,10 @@
 
 
 	<bean id="XSpringApplicationContextHolder" class="base.spring.XSpringApplicationContextHolder"></bean>
+	<!--
 	<context:component-scan base-package="com.ac.base.services" />
 	<context:component-scan base-package="com.demo.services" />
-
+	-->
 
 	<bean id="propertyConfigurer"
 		class="base.spring.beans.factory.config.XCustomizedPropertyPlaceholderConfigurer">
