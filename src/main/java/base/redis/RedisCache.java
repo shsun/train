@@ -4,16 +4,8 @@ import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import org.apache.ibatis.cache.Cache;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.data.redis.connection.jedis.JedisConnection;
-import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
-import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
-import org.springframework.data.redis.serializer.RedisSerializer;
 
 import redis.clients.jedis.exceptions.JedisConnectionException;
-import org.apache.ibatis.logging.Log;
-import org.apache.ibatis.logging.LogFactory;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
@@ -108,7 +100,7 @@ public class RedisCache implements Cache {
 
     @Override
     public Object removeObject(Object key) {
-        System.out.println("RedisCache remove key "+key+", 到了设定时间");
+        System.out.println("RedisCache remove key " + key + ", 到了设定时间");
         Jedis jedis = null;
         JedisPool jedisPool = null;
         Object value = null;
