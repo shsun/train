@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.plugins.Page;
 import com.demo.dao.entity.StaffEty;
 import com.demo.dao.mapper.base.StaffMapper;
 import org.apache.ibatis.session.SqlSessionFactory;
+import redis.clients.jedis.ShardedJedis;
 import redis.clients.jedis.ShardedJedisPool;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,50 +31,20 @@ public class StaffService extends XBasicService<StaffEty, StaffEty> {
     protected SqlSessionFactory sqlSessionFactory;
 
     public Page search(final StaffEty staffEty) throws Exception {
-
-        shardedJedis = shardedJedisPool.getResource();
-        // String abc = shardedJedis.get("name");
-        // shardedJedis.sadd("name", "test");
-
-        // StringOperate();
-        // ListOperate();
-        // SetOperate();
-        // SortedSetOperate();
-        // HashOperate();
-
-        byte[] resultList = null;
-        byte[] resultInteger = null;
-        // resultInteger = shardedJedis.get(SerializeUtil.serialize("edf"));
-        // resultList = shardedJedis.get(SerializeUtil.serialize("abc"));
+        //
+        final int size = staffEty.getExtLimit().getLimit().intValue();
+        final int current = staffEty.getExtLimit().getStart().intValue() % size;
+        // 
+        Page page = new Page(current, size);
 
         int count;
         List<StaffEty> list;
-        if (resultList != null) {
-            list = (List<StaffEty>) SerializeUtil.unserialize(resultList);
-            count = ((Integer) SerializeUtil.unserialize(resultInteger)).intValue();
-        } else {
-            count = staffMapper.selectLimitCount(staffEty);
-            list = staffMapper.selectByLimit(staffEty);
+        count = staffMapper.selectLimitCount(staffEty);
+        list = staffMapper.selectByLimit(staffEty);
 
-            /*
-             * SqlSession session = sqlSessionFactory.openSession(); try { StaffMapper mapper = session.getMapper(StaffMapper.class); count =
-             * mapper.selectLimitCount(staffEty); list = mapper.selectByLimit(staffEty); } finally { session.clearCache(); session.close(); }
-             */
-
-            /*
-             * shardedJedisContainer.getReadWriteLock().writeLock().lock();
-             * 
-             * resultList = SerializeUtil.serialize(list); shardedJedis.set(SerializeUtil.serialize("abc"), resultList);
-             * 
-             * resultInteger = SerializeUtil.serialize(new Integer(count)); shardedJedis.set(SerializeUtil.serialize("edf"), resultInteger);
-             * 
-             * shardedJedisContainer.getReadWriteLock().writeLock().unlock();
-             */
-        }
-
-        shardedJedisPool.returnResource(shardedJedis);
-
-        return XJsonResultFactory.extgrid(list, count);
+        page.setRecords(list);
+        page.setTotal(count);
+        return page;
     }
 
     public void create(final StaffEty staffEty) throws Exception {

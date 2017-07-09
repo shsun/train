@@ -51,9 +51,6 @@ public class StaffCtrl {
 	@RequestMapping(value="search")
 	public @ResponseBody XJsonResult search(@RequestBody final StaffEty staffEty) throws Exception {
 
-
-
-
 		shardedJedis = shardedJedisPool.getResource();
 		//String abc = shardedJedis.get("name");
 		//shardedJedis.sadd("name", "test");
