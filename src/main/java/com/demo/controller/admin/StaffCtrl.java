@@ -2,7 +2,11 @@ package com.demo.controller.admin;
 
 import java.util.*;
 
+import base.redis.RedisCache;
 import base.redis.SerializeUtil;
+import base.redis.ShardedJedisContainer;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
@@ -30,16 +34,17 @@ public class StaffCtrl {
 
 	@Autowired
 	private StaffMapper staffMapper;
-	
-
-	// @Autowired
-    // protected RedisTemplate<Serializable, Serializable> redisTemplate;
 
 	@Autowired
 	protected ShardedJedisPool shardedJedisPool;
 
+	@Autowired
+	protected SqlSessionFactory sqlSessionFactory;
 
 	ShardedJedis shardedJedis;
+
+	ShardedJedisContainer shardedJedisContainer;
+
 	/**
 	 * 查询
 	 */
@@ -47,14 +52,11 @@ public class StaffCtrl {
 	public @ResponseBody XJsonResult search(@RequestBody final StaffEty staffEty) throws Exception {
 
 
+
+
 		shardedJedis = shardedJedisPool.getResource();
 		//String abc = shardedJedis.get("name");
 		//shardedJedis.sadd("name", "test");
-
-
-
-
-
 
 		//StringOperate();
 		//ListOperate();
@@ -62,43 +64,52 @@ public class StaffCtrl {
 		//SortedSetOperate();
 		//HashOperate();
 
+		byte[] resultList = null;
+		byte[] resultInteger = null;
+		// resultInteger = shardedJedis.get(SerializeUtil.serialize("edf"));
+		// resultList = shardedJedis.get(SerializeUtil.serialize("abc"));
 
-
-	/*
-		return redisTemplate.execute(new RedisCallback<XJsonResult>() {
-            @Override
-            public XJsonResult doInRedis(RedisConnection connection) throws DataAccessException {
-                byte[] key = redisTemplate.getStringSerializer().serialize("user.uid." + staffEty.getId());
-                if (connection.exists(key)) {
-                    byte[] value = connection.get(key);
-                    String name = redisTemplate.getStringSerializer().deserialize(value);
-                    StaffEty user = new StaffEty();
-                    user.setName(name);
-                    // user.setId(id);
-                    return null;
-                }
-                return null;
-            }
-        });
-		*/
-
-
-		byte[] result;
-
-		result = shardedJedis.get(SerializeUtil.serialize("abc"));
-
-		int count = staffMapper.selectLimitCount(staffEty);
+		int count;
 		List<StaffEty> list;
-
-        if (result != null) {
-            list = (List<StaffEty>) SerializeUtil.unserialize(result);
+        if (resultList != null) {
+            list = (List<StaffEty>) SerializeUtil.unserialize(resultList);
+			count = ((Integer)SerializeUtil.unserialize(resultInteger)).intValue();
         } else {
+			count = staffMapper.selectLimitCount(staffEty);
 			list = staffMapper.selectByLimit(staffEty);
-			result = SerializeUtil.serialize(list);
-			shardedJedis.set(SerializeUtil.serialize("abc"), result);
+
+			/*
+			SqlSession session = sqlSessionFactory.openSession();
+			try {
+				StaffMapper mapper = session.getMapper(StaffMapper.class);
+				count = mapper.selectLimitCount(staffEty);
+				list = mapper.selectByLimit(staffEty);
+			} finally {
+				session.clearCache();
+				session.close();
+			}
+			*/
+
+
+			/*
+			shardedJedisContainer.getReadWriteLock().writeLock().lock();
+
+			resultList = SerializeUtil.serialize(list);
+			shardedJedis.set(SerializeUtil.serialize("abc"), resultList);
+
+			resultInteger = SerializeUtil.serialize(new Integer(count));
+			shardedJedis.set(SerializeUtil.serialize("edf"), resultInteger);
+
+			shardedJedisContainer.getReadWriteLock().writeLock().unlock();
+			*/
 		}
 
 		shardedJedisPool.returnResource(shardedJedis);
+
+
+
+
+
 
 		return XJsonResultFactory.extgrid(list, count);
 	}

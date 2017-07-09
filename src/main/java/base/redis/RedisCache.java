@@ -5,7 +5,6 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import org.apache.ibatis.cache.Cache;
 
-import org.apache.ibatis.cache.CacheKey;
 import redis.clients.jedis.exceptions.JedisConnectionException;
 
 import redis.clients.jedis.Jedis;
@@ -46,11 +45,13 @@ public class RedisCache implements Cache {
             result = Integer.valueOf(jedis.dbSize().toString());
         } catch (JedisConnectionException e) {
             borrowOrOprSuccess = false;
-            if (jedis != null)
+            if (jedis != null) {
                 jedisPool.returnBrokenResource(jedis);
+            }
         } finally {
-            if (borrowOrOprSuccess)
+            if (borrowOrOprSuccess) {
                 jedisPool.returnResource(jedis);
+            }
         }
         return result;
 
@@ -116,11 +117,13 @@ public class RedisCache implements Cache {
             value = jedis.expire(SerializeUtil.serialize(key.hashCode()), 0);
         } catch (JedisConnectionException e) {
             borrowOrOprSuccess = false;
-            if (jedis != null)
+            if (jedis != null) {
                 jedisPool.returnBrokenResource(jedis);
+            }
         } finally {
-            if (borrowOrOprSuccess)
+            if (borrowOrOprSuccess) {
                 jedisPool.returnResource(jedis);
+            }
         }
         return value;
     }
@@ -138,11 +141,13 @@ public class RedisCache implements Cache {
             jedis.flushAll();
         } catch (JedisConnectionException e) {
             borrowOrOprSuccess = false;
-            if (jedis != null)
+            if (jedis != null) {
                 jedisPool.returnBrokenResource(jedis);
+            }
         } finally {
-            if (borrowOrOprSuccess)
+            if (borrowOrOprSuccess) {
                 jedisPool.returnResource(jedis);
+            }
         }
     }
 
@@ -177,11 +182,13 @@ public class RedisCache implements Cache {
                 jedis = pool.getResource();
             } catch (JedisConnectionException e) {
                 borrowOrOprSuccess = false;
-                if (jedis != null)
+                if (jedis != null) {
                     pool.returnBrokenResource(jedis);
+                }
             } finally {
-                if (borrowOrOprSuccess)
+                if (borrowOrOprSuccess) {
                     pool.returnResource(jedis);
+                }
             }
             jedis = pool.getResource();
             return jedis;
