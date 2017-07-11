@@ -27,8 +27,8 @@ public class Log4jInitServlet extends HttpServlet {
 
 	@Override
 	public void init( ServletConfig config ) throws ServletException {
-		//String version = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
-		//super.getServletContext().setAttribute("SysVersion", version);
+		String version = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+		super.getServletContext().setAttribute("SysVersion", version);
 		
 		/*
 		String prefix = config.getServletContext().getRealPath("/");

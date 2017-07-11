@@ -41,6 +41,8 @@
 
 	<import resource="applicationContext-DAO.xml" />
 
+	<!--
 	<import resource="applicationContext-Quartz.xml" />
+	-->
 
 </beans>	

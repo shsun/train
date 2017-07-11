@@ -14,7 +14,7 @@
 		<if test="birthday != null "> AND s.birthday=#{birthday}</if>
 	</select>
 
-	<select id="selectUserReportBeanByLimit" parameterType="com.demo.user.UserReportForm" resultType="com.demo.user.UserReportBean">
+	<select id="selectUserReportBeanByLimit" parameterType="com.demo.user.UserReportForm" resultType="com.demo.user.UserReportEntry">
 		select s.id,s.name,s.age,s.birthday,s.email,d.id as departmentId,d.name as departmentName,d.phone,d.address
 		from staff s 
 		LEFT JOIN department_staffs_ref de on s.id = de.staffId

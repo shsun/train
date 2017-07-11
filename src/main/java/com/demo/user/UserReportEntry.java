@@ -2,7 +2,7 @@ package com.demo.user;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-public class UserReportBean extends base.dao.XBaseEntity {
+public class UserReportEntry extends base.dao.XBaseEntity {
 	private Integer id;	//ID
 	private String name;	//员工名称
 	private Integer age;	//年龄

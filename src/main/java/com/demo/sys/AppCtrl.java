@@ -17,22 +17,23 @@ import base.utils.jsonresult.XJsonResult;
 import base.utils.jsonresult.XJsonResultFactory;
 
 @Controller
-public class AppController {
+@RequestMapping("/sys/")
+public class AppCtrl {
 	
-	@RequestMapping(value="/sys/login")
+	@RequestMapping(value="login")
 	public @ResponseBody XJsonResult login(@RequestBody Map<String, String> paraMap) {
 		String userNmae = paraMap.get("username");
 		XSessionUtil.login(userNmae);
 		return XJsonResultFactory.success();
 	}
 	
-	@RequestMapping(value="/sys/logout")
+	@RequestMapping(value="logout")
 	public String login() {
 		XSessionUtil.logout();
 		return "redirect:/login";
 	}
 	
-	@RequestMapping("/sys/route")
+	@RequestMapping("route")
 	public @ResponseBody List<Map<String, String>> route(HttpServletRequest request) throws Exception {
 		List<Map<String, String>> routeList = Lists.newArrayList();
 		Map<String, String> route = null;
@@ -63,7 +64,7 @@ public class AppController {
 		return routeList;
 	}
 	
-	@RequestMapping("/sys/menus")
+	@RequestMapping("menus")
 	public @ResponseBody List<Map<String, Object>> ngMenus() throws Exception {
 		List<Map<String, Object>> menuList = Lists.newArrayList();
 		Map<String, Object> menu = null;

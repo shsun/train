@@ -19,17 +19,16 @@ import base.utils.jsonresult.XJsonResultFactory;
 @RequestMapping("/userreport/UserReportCtrl/")
 public class UserReportController {
 
-	@Autowired
-	private UserReportMapper userReportMapper;
-	
-	
-	/**
-	 * 查询
-	 */
-	@RequestMapping(value="search")
-	public @ResponseBody XJsonResult search(@RequestBody UserReportForm userReportForm) throws Exception {
-		int count = userReportMapper.selectUserReportBeanCount(userReportForm);
-		List<UserReportBean> list = userReportMapper.selectUserReportBeanByLimit(userReportForm);
-		return XJsonResultFactory.extgrid(list, count);
-	}
+    @Autowired
+    private UserReportMapper userReportMapper;
+
+    /**
+     * 查询
+     */
+    @RequestMapping(value = "search")
+    public @ResponseBody XJsonResult search(@RequestBody UserReportForm userReportForm) throws Exception {
+        int count = userReportMapper.selectUserReportBeanCount(userReportForm);
+        List<UserReportEntry> list = userReportMapper.selectUserReportBeanByLimit(userReportForm);
+        return XJsonResultFactory.extgrid(list, count);
+    }
 }
