@@ -21,7 +21,7 @@
 	</settings>
 
 	<plugins>
-		<plugin interceptor="com.demo.aop.OffsetLimitInterceptor">
+		<plugin interceptor="com.aop.OffsetLimitInterceptor">
 			<property name="dialectClass" value="base.mybatis.dialect.XMySQLDialect" />
 		</plugin>
 	</plugins>
