@@ -44,13 +44,13 @@
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="configLocation" value="classpath:conf/db/mybatis-config.xml" />
 		<property name="mapperLocations"
-			value="classpath:com/demo/dao/mapper/**/*.xml"></property>
+			value="classpath:com/demo/**/*.xml"></property>
 	</bean>
 	
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
 		<!-- <property name="sqlSessionFactory" ref="sqlSessionFactory"></property> -->
-		<property name="basePackage" value="com.demo.dao.mapper"></property>
+		<property name="basePackage" value="com.demo"></property>
 	</bean>
 
 </beans>	

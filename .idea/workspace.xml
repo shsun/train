@@ -2,38 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f9c6d54-e7ed-41ec-8e76-ee547441d854" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/demo/basic/IBeanConvertor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/demo/basic/ISumEntry.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/demo/basic/XBasicBeanConvertor.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/demo/basic/XBasicController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/demo/departmentstaff/DepartmentStaffsRefMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/demo/staff/StaffMapper.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/demo/staff/StaffService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/demo/user/UserEntry.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/dao/mapper/base/DepartmentStaffsRefMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/dao/mapper/base/StaffMapper.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/services/StaffService.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/aop/OffsetLimitInterceptor.java" afterPath="$PROJECT_DIR$/src/main/java/com/aop/OffsetLimitInterceptor.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/controller/AppCtrl.java" afterPath="$PROJECT_DIR$/src/main/java/com/demo/sys/AppController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/controller/ControllerInterceptor.java" afterPath="$PROJECT_DIR$/src/main/java/com/demo/basic/ControllerInterceptor.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/controller/GlobalControllerAdvice.java" afterPath="$PROJECT_DIR$/src/main/java/com/demo/basic/GlobalControllerAdvice.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/controller/admin/DepartmentCtrl.java" afterPath="$PROJECT_DIR$/src/main/java/com/demo/department/DepartmentCtrl.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/controller/admin/StaffCtrl.java" afterPath="$PROJECT_DIR$/src/main/java/com/demo/staff/StaffController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/controller/userreport/UserReportBean.java" afterPath="$PROJECT_DIR$/src/main/java/com/demo/user/UserReportBean.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/controller/userreport/UserReportCtrl.java" afterPath="$PROJECT_DIR$/src/main/java/com/demo/user/UserReportController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/controller/userreport/UserReportForm.java" afterPath="$PROJECT_DIR$/src/main/java/com/demo/user/UserReportForm.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/dao/entity/DepartmentEty.java" afterPath="$PROJECT_DIR$/src/main/java/com/demo/department/DepartmentEntry.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/dao/entity/DepartmentStaffsRefEty.java" afterPath="$PROJECT_DIR$/src/main/java/com/demo/departmentstaff/DepartmentStaffsRefEntry.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/dao/entity/StaffEty.java" afterPath="$PROJECT_DIR$/src/main/java/com/demo/staff/StaffEntry.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/dao/mapper/base/DepartmentMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/demo/department/DepartmentMapper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/dao/mapper/base/DepartmentMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/com/demo/department/DepartmentMapper.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/dao/mapper/base/DepartmentStaffsRefMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/com/demo/departmentstaff/DepartmentStaffsRefMapper.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/dao/mapper/base/StaffMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/com/demo/staff/StaffMapper.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/dao/mapper/module/UserReportMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/demo/sys/UserReportMapper.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/dao/mapper/module/UserReportMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/com/demo/sys/UserReportMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/conf/db/mybatis-config.xml" afterPath="$PROJECT_DIR$/src/main/resources/conf/db/mybatis-config.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/conf/spring-Controllers.xml" afterPath="$PROJECT_DIR$/src/main/resources/conf/spring-Controllers.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/conf/applicationContext-Mybatis.xml" afterPath="$PROJECT_DIR$/src/main/resources/conf/applicationContext-Mybatis.xml" />
     </list>
     <ignored path="xyz.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -122,6 +91,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/demo/departmentstaff/DepartmentStaffsRefMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/demo/sys/UserReportMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/demo/user/UserReportForm.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/conf/applicationContext-Mybatis.xml" />
       </list>
     </option>
   </component>
@@ -208,6 +178,54 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xyz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="train" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="xyz" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="train" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="conf" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -891,12 +909,12 @@
       <workItem from="1499666517008" duration="685000" />
       <workItem from="1499750019604" duration="4337000" />
       <workItem from="1499754606010" duration="909000" />
-      <workItem from="1499755698483" duration="408000" />
+      <workItem from="1499755698483" duration="536000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47145000" />
+    <option name="totallyTimeSpent" value="47273000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="29" y="23" width="1411" height="877" extended-state="6" />
@@ -1024,13 +1042,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/conf/applicationContext-Mybatis.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7480916">
-          <caret line="50" column="75" selection-start-line="50" selection-start-column="58" selection-end-line="50" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/base/redis/RedisUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.18417463">
@@ -1042,6 +1053,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.42442748">
           <caret line="29" column="35" selection-start-line="29" selection-start-column="35" selection-end-line="29" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1386,6 +1398,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.10231923">
           <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/conf/applicationContext-Mybatis.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.143695">
+          <caret line="52" column="52" selection-start-line="52" selection-start-column="52" selection-end-line="52" selection-end-column="52" />
           <folding />
         </state>
       </provider>
