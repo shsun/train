@@ -8,6 +8,8 @@ import redis.clients.jedis.Jedis;
  * Redis distributed lock implementation (fork by Bruno Bossola <bbossola@gmail.com>)
  *
  * https://github.com/abelaska/jedis-lock
+ *
+ * http://tool.oschina.net/uploads/apidocs/
  */
 public class XJedisLock {
 
