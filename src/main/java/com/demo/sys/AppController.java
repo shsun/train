@@ -18,7 +18,7 @@ import base.utils.jsonresult.XJsonResultFactory;
 
 @Controller
 @RequestMapping("/sys/")
-public class AppCtrl {
+public class AppController {
 	
 	@RequestMapping(value="login")
 	public @ResponseBody XJsonResult login(@RequestBody Map<String, String> paraMap) {

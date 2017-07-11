@@ -54,7 +54,6 @@ public class RedisCache implements Cache {
             }
         }
         return result;
-
     }
 
     @Override

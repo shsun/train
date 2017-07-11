@@ -89,9 +89,13 @@ public class StaffController {
                 /*
                  * shardedJedisContainer.getReadWriteLock().writeLock().lock();
                  * 
-                 * resultList = SerializeUtil.serialize(list); shardedJedis.set(SerializeUtil.serialize("abc"), resultList);
+                 * resultList = SerializeUtil.serialize(list);
+                 *
+                 * shardedJedis.set(SerializeUtil.serialize("abc"), resultList);
                  * 
-                 * resultInteger = SerializeUtil.serialize(new Integer(count)); shardedJedis.set(SerializeUtil.serialize("edf"), resultInteger);
+                 * resultInteger = SerializeUtil.serialize(new Integer(count));
+                 *
+                 * shardedJedis.set(SerializeUtil.serialize("edf"), resultInteger);
                  * 
                  * shardedJedisContainer.getReadWriteLock().writeLock().unlock();
                  */
@@ -100,6 +104,8 @@ public class StaffController {
             shardedJedisPool.returnResource(shardedJedis);
 
         } catch (JedisConnectionException e) {
+            shardedJedisPool.returnBrokenResource(shardedJedis);
+        } finally {
 
         }
 

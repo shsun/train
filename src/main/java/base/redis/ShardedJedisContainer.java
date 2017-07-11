@@ -27,13 +27,19 @@ public class ShardedJedisContainer {
         this.shardedJedisPool = pool;
     }
 
-    public void putObject(Object key, Object value) {
+    public void putObject(Object key, Object value, Boolean lock) {
         System.out.println("ShardedJedisContainer put key=" + key + ", value=" + value);
         ShardedJedis jedis = null;
         boolean borrowOrOprSuccess = true;
         try {
             jedis = shardedJedisPool.getResource();
+            if (lock) {
+                this.getReadWriteLock().writeLock().lock();
+            }
             jedis.set(SerializeUtil.serialize(key.hashCode()), SerializeUtil.serialize(value));
+            if (lock) {
+                this.getReadWriteLock().writeLock().unlock();
+            }
         } catch (JedisConnectionException e) {
             borrowOrOprSuccess = false;
             if (jedis != null) {
@@ -66,24 +72,6 @@ public class ShardedJedisContainer {
         return value;
     }
 
-    /**
-     *
-     * @param key
-     * @param defaultValue
-     * @param forcePut true indicate put the defaultValue into redis, otherwise not.
-     * @return
-     */
-    public Object getObject(Object key, Object defaultValue, Boolean forcePut) {
-        Object value = getObject(key);
-        if (value == null) {
-            value = defaultValue;
-            if (forcePut) {
-                putObject(key, value);
-            }
-        }
-        return value;
-    }
-
     public Object removeObject(Object key) {
         System.out.println("ShardedJedisContainer remove key " + key + ", 到了设定时间");
         ShardedJedis jedis = null;
@@ -105,23 +93,11 @@ public class ShardedJedisContainer {
         return value;
     }
 
-    public void clear() {
-        System.out.println("RedisCache clear all data");
-        ShardedJedis jedis = null;
-        boolean borrowOrOprSuccess = true;
-        try {
-            jedis = shardedJedisPool.getResource();
-            // jedis.flushDB();
-            // jedis.flushAll();
-        } catch (JedisConnectionException e) {
-            borrowOrOprSuccess = false;
-            if (jedis != null)
-                shardedJedisPool.returnBrokenResource(jedis);
-        } finally {
-            if (borrowOrOprSuccess)
-                shardedJedisPool.returnResource(jedis);
-        }
-    }
+    /*
+     * public void clear() { System.out.println("RedisCache clear all data"); ShardedJedis jedis = null; boolean borrowOrOprSuccess = true; try { jedis =
+     * shardedJedisPool.getResource(); // jedis.flushDB(); // jedis.flushAll(); } catch (JedisConnectionException e) { borrowOrOprSuccess = false; if (jedis !=
+     * null) shardedJedisPool.returnBrokenResource(jedis); } finally { if (borrowOrOprSuccess) shardedJedisPool.returnResource(jedis); } }
+     */
 
     public ReadWriteLock getReadWriteLock() {
         return readWriteLock;

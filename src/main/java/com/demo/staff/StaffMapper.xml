@@ -3,7 +3,11 @@
 <mapper namespace="com.demo.staff.StaffMapper">
 
 	<cache eviction="LRU" size="999999" type="base.redis.RedisCache" />
-	
+
+	<!--
+	<cache type="org.mybatis.caches.redis.RedisCache" />
+	-->
+
 	<insert id="insert" parameterType="com.demo.staff.StaffEntry">
 		insert into staff(
 			id,name,age,birthday,email)
