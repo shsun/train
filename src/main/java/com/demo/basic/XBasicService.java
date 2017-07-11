@@ -1,4 +1,4 @@
-package com.demo.services;
+package com.demo.basic;
 
 import com.baomidou.mybatisplus.plugins.Page;
 import com.demo.basic.ISumEntry;

@@ -2,7 +2,7 @@ package com.demo.staff;
 
 import com.demo.basic.ISumEntry;
 import com.demo.user.UserEntry;
-import com.demo.services.XBasicService;
+import com.demo.basic.XBasicService;
 import org.apache.ibatis.session.SqlSessionFactory;
 import redis.clients.jedis.ShardedJedisPool;
 
