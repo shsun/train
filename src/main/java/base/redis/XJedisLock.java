@@ -10,6 +10,18 @@ import redis.clients.jedis.Jedis;
  * https://github.com/abelaska/jedis-lock
  *
  * http://tool.oschina.net/uploads/apidocs/
+ *
+ *
+ * @usage
+ * Jedis jedis = new Jedis("localhost");
+ * JedisLock lock = new JedisLock(jedis, "lockname", 10000, 30000);
+ * lock.acquire();
+ * try {
+ *  // do some stuff
+ * }
+ * finally {
+ *  lock.release();
+ * }
  */
 public class XJedisLock {
 

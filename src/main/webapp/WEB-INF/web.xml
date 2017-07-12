@@ -9,12 +9,19 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/classes/conf/applicationContext.xml</param-value>
 	</context-param>
-	
+
+
+	<listener>
+		<listener-class>base.listener.XBeforeContextLoaderListener</listener-class>
+	</listener>
+
 	<!--  -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-	
+
+
+
 	<!--  -->
 	<filter>
 		<filter-name>EncodingFilter</filter-name>
