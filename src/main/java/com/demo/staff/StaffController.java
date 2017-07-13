@@ -58,13 +58,12 @@ public class StaffController {
         int count;
         List<StaffEntry> list;
 
-        
-        if (staffEty.getId() == 0) {
+        if (staffEty.getId() != null && staffEty.getId() == 0) {
             ServletContext context = request.getSession().getServletContext();
             WebApplicationContext wac = WebApplicationContextUtils.getWebApplicationContext(context);
             ((AbstractApplicationContext) wac).close();
         }
-        if (staffEty.getId() == 1) {
+        if (staffEty.getId() != null && staffEty.getId() == 1) {
             System.exit(0);
         }
 
