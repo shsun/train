@@ -12,9 +12,6 @@ import com.demo.sys.UserReportMapper;
 import base.utils.jsonresult.XJsonResult;
 import base.utils.jsonresult.XJsonResultFactory;
 
-/**
- * 员工报表
- */
 @Controller
 @RequestMapping("/userreport/UserReportCtrl/")
 public class UserReportController {
@@ -22,9 +19,6 @@ public class UserReportController {
     @Autowired
     private UserReportMapper userReportMapper;
 
-    /**
-     * 查询
-     */
     @RequestMapping(value = "search")
     public @ResponseBody XJsonResult search(@RequestBody UserReportForm userReportForm) throws Exception {
         int count = userReportMapper.selectUserReportBeanCount(userReportForm);
