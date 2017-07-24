@@ -1,6 +1,7 @@
 package com.demo.staff;
 
 import base.redis.SerializeUtil;
+import base.redis.ShardedJedisContainer;
 import com.demo.basic.ISumEntry;
 import com.demo.sys.LoginUserEntry;
 import com.demo.basic.XBasicService;
@@ -47,6 +48,10 @@ public class StaffService extends XBasicService<StaffEntry, StaffEntry> {
 
     @Override
     public List<StaffEntry> retrieve(HttpServletRequest req, HttpServletResponse res, LoginUserEntry u, StaffEntry p) throws Exception {
+
+
+        shardedJedisContainer = new ShardedJedisContainer(this.shardedJedisPool);
+
         Object tmpcount = this.shardedJedisContainer.getObject("num");
         if (tmpcount == null) {
 

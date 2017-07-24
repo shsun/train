@@ -23,6 +23,11 @@ public abstract class XBasicService<PARAMETER, RESULT> {
     protected ShardedJedisContainer shardedJedisContainer;
 
 
+    public XBasicService() {
+
+    }
+
+
     @SuppressWarnings("unchecked")
     public Map<String, Object> retrieveViewData(HttpServletRequest req, HttpServletResponse res) {
         Map<String, Object> data = new HashMap<String, Object>();
