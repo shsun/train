@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import base.utils.jsonresult.XJsonResult;
 import base.utils.jsonresult.XJsonResultFactory;
-import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import redis.clients.jedis.ShardedJedis;
@@ -29,9 +28,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * 员工管理
- */
 @Controller
 @RequestMapping("/admin/StaffCtrl/")
 public class StaffController {
@@ -49,21 +45,18 @@ public class StaffController {
 
     ShardedJedisContainer shardedJedisContainer;
 
-    /**
-     * 查询
-     */
     @RequestMapping(value = "search")
-    public @ResponseBody XJsonResult search(HttpServletRequest request, HttpServletResponse response, @RequestBody StaffEntry staffEty) throws Exception {
+    public @ResponseBody XJsonResult search(HttpServletRequest request, HttpServletResponse response, @RequestBody StaffEntry entry) throws Exception {
 
         int count;
         List<StaffEntry> list;
 
-        if (staffEty.getId() != null && staffEty.getId() == 0) {
+        if (entry.getId() != null && entry.getId() == 0) {
             ServletContext context = request.getSession().getServletContext();
             WebApplicationContext wac = WebApplicationContextUtils.getWebApplicationContext(context);
             ((AbstractApplicationContext) wac).close();
         }
-        if (staffEty.getId() != null && staffEty.getId() == 1) {
+        if (entry.getId() != null && entry.getId() == 1) {
             System.exit(0);
         }
 
@@ -87,14 +80,14 @@ public class StaffController {
                 list = (List<StaffEntry>) SerializeUtil.unserialize(resultList);
                 count = ((Integer) SerializeUtil.unserialize(resultInteger)).intValue();
             } else {
-                count = staffMapper.selectLimitCount(staffEty);
-                list = staffMapper.selectByLimit(staffEty);
+                count = staffMapper.selectLimitCount(entry);
+                list = staffMapper.selectByLimit(entry);
 
                 SqlSession session = sqlSessionFactory.openSession();
                 try {
                     StaffMapper mapper = session.getMapper(StaffMapper.class);
-                    count = mapper.selectLimitCount(staffEty);
-                    list = mapper.selectByLimit(staffEty);
+                    count = mapper.selectLimitCount(entry);
+                    list = mapper.selectByLimit(entry);
                 } finally {
                     session.clearCache();
                     session.close();
@@ -123,8 +116,8 @@ public class StaffController {
 
         }
 
-        count = staffMapper.selectLimitCount(staffEty);
-        list = staffMapper.selectByLimit(staffEty);
+        count = staffMapper.selectLimitCount(entry);
+        list = staffMapper.selectByLimit(entry);
 
         return XJsonResultFactory.extgrid(list, count);
     }
@@ -133,20 +126,20 @@ public class StaffController {
      * 保存
      */
     @RequestMapping(value = "save")
-    public @ResponseBody XJsonResult save(@RequestBody final StaffEntry staffEty) throws Exception {
+    public @ResponseBody XJsonResult save(HttpServletRequest request, HttpServletResponse response, @RequestBody final StaffEntry entry) throws Exception {
 
         /*
          * redisTemplate.execute(new RedisCallback<Object>() {
          * 
          * @Override public Object doInRedis(RedisConnection connection) throws DataAccessException {
-         * connection.set(redisTemplate.getStringSerializer().serialize("user.uid." + staffEty.getId()),
-         * redisTemplate.getStringSerializer().serialize(staffEty.getName())); return null; } });
+         * connection.set(redisTemplate.getStringSerializer().serialize("user.uid." + entry.getId()),
+         * redisTemplate.getStringSerializer().serialize(entry.getName())); return null; } });
          */
 
-        if (staffEty.getId() == null) {
-            staffMapper.insert(staffEty);
+        if (entry.getId() == null) {
+            staffMapper.insert(entry);
         } else {
-            staffMapper.updateById(staffEty);
+            staffMapper.updateById(entry);
         }
         return XJsonResultFactory.success();
     }
@@ -155,7 +148,7 @@ public class StaffController {
      * 删除
      */
     @RequestMapping(value = "delete")
-    public @ResponseBody XJsonResult delete(@RequestParam("id") int id) {
+    public @ResponseBody XJsonResult delete(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") int id) {
         staffMapper.deleteById(id);
         return XJsonResultFactory.success();
     }
@@ -164,7 +157,7 @@ public class StaffController {
      * 得到详细信息
      */
     @RequestMapping(value = "getDetailInfo")
-    public @ResponseBody XJsonResult getDetailInfo(@RequestParam("id") int id) throws Exception {
+    public @ResponseBody XJsonResult getDetailInfo(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") int id) throws Exception {
 
         /*
          * return redisTemplate.execute(new RedisCallback<XJsonResult>() {

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,20 +22,20 @@ import base.utils.jsonresult.XJsonResultFactory;
 public class AppController {
 	
 	@RequestMapping(value="login")
-	public @ResponseBody XJsonResult login(@RequestBody Map<String, String> paraMap) {
-		String userNmae = paraMap.get("username");
+	public @ResponseBody XJsonResult login(HttpServletRequest request, HttpServletResponse response, @RequestBody Map<String, String> map) {
+		String userNmae = map.get("username");
 		XSessionUtil.login(userNmae);
 		return XJsonResultFactory.success();
 	}
 	
 	@RequestMapping(value="logout")
-	public String login() {
+	public String login(HttpServletRequest request, HttpServletResponse response) {
 		XSessionUtil.logout();
 		return "redirect:/login";
 	}
 	
 	@RequestMapping("route")
-	public @ResponseBody List<Map<String, String>> route(HttpServletRequest request) throws Exception {
+	public @ResponseBody List<Map<String, String>> route(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		List<Map<String, String>> routeList = Lists.newArrayList();
 		Map<String, String> route = null;
 	
@@ -65,7 +66,7 @@ public class AppController {
 	}
 	
 	@RequestMapping("menus")
-	public @ResponseBody List<Map<String, Object>> ngMenus() throws Exception {
+	public @ResponseBody List<Map<String, Object>> retrieveMenus(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		List<Map<String, Object>> menuList = Lists.newArrayList();
 		Map<String, Object> menu = null;
 		Map<String, String> subMenu = null;

@@ -7,8 +7,8 @@ import com.demo.user.UserReportForm;
 
 public interface UserReportMapper {
 
-	public int selectUserReportBeanCount(UserReportForm form);
+    int selectUserReportBeanCount(UserReportForm form);
 
-	public List<UserReportEntry> selectUserReportBeanByLimit(UserReportForm form);
+    List<UserReportEntry> selectUserReportBeanByLimit(UserReportForm form);
 
 }

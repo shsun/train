@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import base.utils.jsonresult.XJsonResult;
 import base.utils.jsonresult.XJsonResultFactory;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * 部门管理
  */
@@ -24,30 +27,30 @@ public class DepartmentController extends XBasicController {
     private DepartmentMapper departmentMapper;
 
     @RequestMapping(value = "search")
-    public @ResponseBody XJsonResult search(@RequestBody DepartmentEntry departmentEntry) throws Exception {
-        int count = departmentMapper.selectLimitCount(departmentEntry);
-        List<DepartmentEntry> list = departmentMapper.selectByLimit(departmentEntry);
+    public @ResponseBody XJsonResult search(HttpServletRequest request, HttpServletResponse response, @RequestBody DepartmentEntry entry) throws Exception {
+        int count = departmentMapper.selectLimitCount(entry);
+        List<DepartmentEntry> list = departmentMapper.selectByLimit(entry);
         return XJsonResultFactory.extgrid(list, count);
     }
 
     @RequestMapping(value = "save")
-    public @ResponseBody XJsonResult save(@RequestBody DepartmentEntry departmentEntry) throws Exception {
-        if (departmentEntry.getId() == null) {
-            departmentMapper.insert(departmentEntry);
+    public @ResponseBody XJsonResult save(HttpServletRequest request, HttpServletResponse response, @RequestBody DepartmentEntry entry) throws Exception {
+        if (entry.getId() == null) {
+            departmentMapper.insert(entry);
         } else {
-            departmentMapper.updateById(departmentEntry);
+            departmentMapper.updateById(entry);
         }
         return XJsonResultFactory.success();
     }
 
     @RequestMapping(value = "delete")
-    public @ResponseBody XJsonResult delete(@RequestParam("id") int id) {
+    public @ResponseBody XJsonResult delete(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") int id) {
         departmentMapper.deleteById(id);
         return XJsonResultFactory.success();
     }
 
     @RequestMapping(value = "getDetailInfo")
-    public @ResponseBody XJsonResult getDetailInfo(@RequestParam("id") int id) throws Exception {
+    public @ResponseBody XJsonResult getDetailInfo(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") int id) throws Exception {
         DepartmentEntry departmentEntry = departmentMapper.selectById(id);
         return XJsonResultFactory.success(departmentEntry);
     }
