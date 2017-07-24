@@ -13,11 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import base.spring.beans.factory.config.XCustomizedPropertyPlaceholderConfigurer;
 
-/**
- * 
- * @author shsun
- * 
- */
 @Intercepts({ @Signature(type = Executor.class, method = "query", args = { MappedStatement.class, Object.class,
 		RowBounds.class, ResultHandler.class }) })
 public class OffsetLimitInterceptor extends base.mybatis.plugin.XOffsetLimitInterceptor {
