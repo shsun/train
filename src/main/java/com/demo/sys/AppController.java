@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+
 import base.utils.XSessionUtil;
 import base.utils.jsonresult.XJsonResult;
 import base.utils.jsonresult.XJsonResultFactory;
@@ -38,11 +39,11 @@ public class AppController {
 
     @RequestMapping("route")
     public @ResponseBody List<Map<String, String>> route(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        List<Map<String, String>> routeList = Lists.newArrayList();
+        List<Map<String, String>> list = Lists.newArrayList();
         Map<String, String> route = null;
 
         route = Maps.newHashMap();
-        routeList.add(route);
+        list.add(route);
         route.put("name", "员工管理");
         route.put("ctrl", "StaffCtrl");
         route.put("path", "/admin/staff");
@@ -50,7 +51,7 @@ public class AppController {
         route.put("files", request.getContextPath() + "/ctrl/admin/StaffCtrl.js");
 
         route = Maps.newHashMap();
-        routeList.add(route);
+        list.add(route);
         route.put("name", "部门管理");
         route.put("ctrl", "DepartmentCtrl");
         route.put("path", "/admin/department");
@@ -58,13 +59,14 @@ public class AppController {
         route.put("files", request.getContextPath() + "/ctrl/admin/DepartmentCtrl.js");
 
         route = Maps.newHashMap();
-        routeList.add(route);
+        list.add(route);
         route.put("name", "员工报表");
         route.put("ctrl", "UserReportCtrl");
         route.put("path", "/module/UserReport");
         route.put("templateUrl", request.getContextPath() + "/templates/module/UserReportListTpl.html?v=");
         route.put("files", request.getContextPath() + "/ctrl/module/UserReportCtrl.js");
-        return routeList;
+
+        return list;
     }
 
     @RequestMapping("menus")
