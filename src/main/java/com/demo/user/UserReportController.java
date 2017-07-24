@@ -20,9 +20,9 @@ public class UserReportController {
     private UserReportMapper userReportMapper;
 
     @RequestMapping(value = "search")
-    public @ResponseBody XJsonResult search(@RequestBody UserReportForm userReportForm) throws Exception {
-        int count = userReportMapper.selectUserReportBeanCount(userReportForm);
-        List<UserReportEntry> list = userReportMapper.selectUserReportBeanByLimit(userReportForm);
+    public @ResponseBody XJsonResult search(@RequestBody UserReportForm form) throws Exception {
+        int count = userReportMapper.selectUserReportBeanCount(form);
+        List<UserReportEntry> list = userReportMapper.selectUserReportBeanByLimit(form);
         return XJsonResultFactory.extgrid(list, count);
     }
 }
