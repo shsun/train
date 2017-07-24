@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.demo.user.UserEntry;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,8 +24,9 @@ public class AppController {
 
     @RequestMapping(value = "login")
     public @ResponseBody XJsonResult login(HttpServletRequest request, HttpServletResponse response, @RequestBody Map<String, String> map) {
-        String userNmae = map.get("username");
-        XSessionUtil.login(userNmae);
+        String username = map.get("username");
+        String password = map.get("password");
+        XSessionUtil.login(new UserEntry(username, password));
         return XJsonResultFactory.success();
     }
 

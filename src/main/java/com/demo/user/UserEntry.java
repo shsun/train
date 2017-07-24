@@ -1,7 +1,21 @@
 package com.demo.user;
 
-/**
- * Created by shsun on 7/11/17.
- */
 public class UserEntry {
+
+    private String name;
+    private String password;
+
+    public UserEntry(String name, String password) {
+        this.name = name;
+        this.password = password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
 }
