@@ -64,7 +64,7 @@ angular.module('myApp').controller('DepartmentEditCtrl', function($scope, $http,
 	$scope.editForm.id = id;
 	if(id && id > 0) {
 		$scope.title = '编辑';
-		$scope.promise = $http.get(ctx + '/admin/DepartmentCtrl/getDetailInfo?id='+id).success(function(data){
+		$scope.promise = $http.get(ctx + '/admin/DepartmentCtrl/retrieveOne?id='+id).success(function(data){
 			$scope.editForm = data.data;
 		});
 	}

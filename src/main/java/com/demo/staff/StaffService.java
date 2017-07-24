@@ -21,9 +21,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
-/**
- * Created by shsun on 7/9/17.
- */
 @Transactional
 @Service
 public class StaffService extends XBasicService<StaffEntry, StaffEntry> {

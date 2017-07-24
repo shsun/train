@@ -28,14 +28,14 @@ public class StaffController {
     protected SqlSessionFactory sqlSessionFactory;
 
     @RequestMapping(value = "search")
-    public @ResponseBody XJsonResult search(HttpServletRequest request, HttpServletResponse response, @RequestBody StaffEntry entry) throws Exception {
-        List<StaffEntry> list = service.retrieve(request, response, XSessionUtil.getLoginUser(), entry);
+    public @ResponseBody XJsonResult retrieve(HttpServletRequest request, HttpServletResponse response, @RequestBody StaffEntry entry) throws Exception {
         int count = service.sumOne(request, response, XSessionUtil.getLoginUser(), entry);
+        List<StaffEntry> list = service.retrieve(request, response, XSessionUtil.getLoginUser(), entry);
         return XJsonResultFactory.extgrid(list, count);
     }
 
     @RequestMapping(value = "save")
-    public @ResponseBody XJsonResult save(HttpServletRequest request, HttpServletResponse response, @RequestBody final StaffEntry entry) throws Exception {
+    public @ResponseBody XJsonResult create(HttpServletRequest request, HttpServletResponse response, @RequestBody final StaffEntry entry) throws Exception {
         return XJsonResultFactory.success();
     }
 
@@ -44,8 +44,8 @@ public class StaffController {
         return XJsonResultFactory.success();
     }
 
-    @RequestMapping(value = "getDetailInfo")
-    public @ResponseBody XJsonResult getDetailInfo(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") int id) throws Exception {
+    @RequestMapping(value = "retrieveOne")
+    public @ResponseBody XJsonResult retrieveOne(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") int id) throws Exception {
         return null;
     }
 

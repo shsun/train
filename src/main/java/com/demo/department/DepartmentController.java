@@ -46,8 +46,8 @@ public class DepartmentController extends XBasicController {
         return XJsonResultFactory.success();
     }
 
-    @RequestMapping(value = "getDetailInfo")
-    public @ResponseBody XJsonResult getDetailInfo(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") int id) throws Exception {
+    @RequestMapping(value = "retrieveOne")
+    public @ResponseBody XJsonResult retrieveOne(HttpServletRequest request, HttpServletResponse response, @RequestParam("id") int id) throws Exception {
         DepartmentEntry departmentEntry = departmentMapper.selectById(id);
         return XJsonResultFactory.success(departmentEntry);
     }
