@@ -21,9 +21,18 @@
 	</settings>
 
 	<plugins>
-		<plugin interceptor="com.aop.OffsetLimitInterceptor">
-			<property name="dialectClass" value="base.mybatis.dialect.XMySQLDialect" />
+		<plugin interceptor="com.baomidou.mybatisplus.plugins.PaginationInterceptor">
+			<property name="dialectClazz" value="com.baomidou.mybatisplus.plugins.pagination.dialects.MySqlDialect" />
 		</plugin>
+		<!--
+        <plugin interceptor="com.baomidou.mybatisplus.plugins.PerformanceInterceptor">
+                 <property name="maxTime" value="10000" />
+                 <property name="format" value="false" />
+         </plugin>
+         -->
+
+
 	</plugins>
+
 
 </configuration>

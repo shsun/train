@@ -1,4 +1,4 @@
-package base.mybatis.plugin;
+package base.orm;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.Properties;
@@ -16,12 +16,10 @@ import org.apache.ibatis.plugin.Signature;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 
-import base.mybatis.dialect.XDialect;
-
 /**
  * <pre>
  * 		<plugins>
- * 			<plugin interceptor="base.mybatis.plugin.XOffsetLimitInterceptor">
+ * 			<plugin interceptor="base.orm.XOffsetLimitInterceptor">
  * 				<property name="dialectClass" value="base.mybatis.dialect.XOracleDialect"/>
  * 			</plugin>
  * 		</plugins>
