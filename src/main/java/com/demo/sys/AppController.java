@@ -20,94 +20,92 @@ import base.utils.jsonresult.XJsonResultFactory;
 @Controller
 @RequestMapping("/sys/")
 public class AppController {
-	
-	@RequestMapping(value="login")
-	public @ResponseBody XJsonResult login(HttpServletRequest request, HttpServletResponse response, @RequestBody Map<String, String> map) {
-		String userNmae = map.get("username");
-		XSessionUtil.login(userNmae);
-		return XJsonResultFactory.success();
-	}
-	
-	@RequestMapping(value="logout")
-	public String login(HttpServletRequest request, HttpServletResponse response) {
-		XSessionUtil.logout();
-		return "redirect:/login";
-	}
-	
-	@RequestMapping("route")
-	public @ResponseBody List<Map<String, String>> route(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		List<Map<String, String>> routeList = Lists.newArrayList();
-		Map<String, String> route = null;
-	
-		route = Maps.newHashMap();
-		routeList.add(route);
-		route.put("name", "员工管理");
-		route.put("ctrl", "StaffCtrl");
-		route.put("path", "/admin/staff");
-		route.put("templateUrl", request.getContextPath() + "/templates/admin/StaffListTpl.html?v=");
-		route.put("files", request.getContextPath() + "/ctrl/admin/StaffCtrl.js");
-	
-		route = Maps.newHashMap();
-		routeList.add(route);
-		route.put("name", "部门管理");
-		route.put("ctrl", "DepartmentCtrl");
-		route.put("path", "/admin/department");
-		route.put("templateUrl", request.getContextPath() + "/templates/admin/DepartmentListTpl.html?v=");
-		route.put("files", request.getContextPath() + "/ctrl/admin/DepartmentCtrl.js");
-	
-		route = Maps.newHashMap();
-		routeList.add(route);
-		route.put("name", "员工报表");
-		route.put("ctrl", "UserReportCtrl");
-		route.put("path", "/module/UserReport");
-		route.put("templateUrl", request.getContextPath() + "/templates/module/UserReportListTpl.html?v=");
-		route.put("files", request.getContextPath() + "/ctrl/module/UserReportCtrl.js");
-		return routeList;
-	}
-	
-	@RequestMapping("menus")
-	public @ResponseBody List<Map<String, Object>> retrieveMenus(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		List<Map<String, Object>> menuList = Lists.newArrayList();
-		Map<String, Object> menu = null;
-		Map<String, String> subMenu = null;
-		List<Map<String, String>> subMenuList = null;
-	
-		menu = Maps.newHashMap();
-		menuList.add(menu);
-		menu.put("name", "后台管理");
-		menu.put("type", "toggle");
-		menu.put("showTip", "false");
-		menu.put("icon", "fa-folder");
-		
-		subMenuList = Lists.newArrayList();
-		menu.put("subMenus", subMenuList);
-			
-		subMenu = Maps.newHashMap();
-		subMenu.put("name", "员工管理");
-		subMenu.put("type", "link");
-		subMenu.put("showTip", "false");
-		subMenu.put("icon", "fa-file-o");
-		subMenu.put("path", "/admin/staff");
-		subMenuList.add(subMenu);
-			
-		subMenu = Maps.newHashMap();
-		subMenu.put("name", "部门管理");
-		subMenu.put("type", "link");
-		subMenu.put("showTip", "false");
-		subMenu.put("icon", "fa-file-o");
-		subMenu.put("path", "/admin/department");
-		subMenuList.add(subMenu);
-		
-	
-		menu = Maps.newHashMap();
-		menuList.add(menu);
-		menu.put("name", "员工报表");
-		menu.put("type", "link");
-		menu.put("showTip", "false");
-		menu.put("icon", "fa-file-o");
-		menu.put("path", "/module/UserReport");
-		
-		
-		return menuList;
-	}
+
+    @RequestMapping(value = "login")
+    public @ResponseBody XJsonResult login(HttpServletRequest request, HttpServletResponse response, @RequestBody Map<String, String> map) {
+        String userNmae = map.get("username");
+        XSessionUtil.login(userNmae);
+        return XJsonResultFactory.success();
+    }
+
+    @RequestMapping(value = "logout")
+    public String login(HttpServletRequest request, HttpServletResponse response) {
+        XSessionUtil.logout();
+        return "redirect:/login";
+    }
+
+    @RequestMapping("route")
+    public @ResponseBody List<Map<String, String>> route(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        List<Map<String, String>> routeList = Lists.newArrayList();
+        Map<String, String> route = null;
+
+        route = Maps.newHashMap();
+        routeList.add(route);
+        route.put("name", "员工管理");
+        route.put("ctrl", "StaffCtrl");
+        route.put("path", "/admin/staff");
+        route.put("templateUrl", request.getContextPath() + "/templates/admin/StaffListTpl.html?v=");
+        route.put("files", request.getContextPath() + "/ctrl/admin/StaffCtrl.js");
+
+        route = Maps.newHashMap();
+        routeList.add(route);
+        route.put("name", "部门管理");
+        route.put("ctrl", "DepartmentCtrl");
+        route.put("path", "/admin/department");
+        route.put("templateUrl", request.getContextPath() + "/templates/admin/DepartmentListTpl.html?v=");
+        route.put("files", request.getContextPath() + "/ctrl/admin/DepartmentCtrl.js");
+
+        route = Maps.newHashMap();
+        routeList.add(route);
+        route.put("name", "员工报表");
+        route.put("ctrl", "UserReportCtrl");
+        route.put("path", "/module/UserReport");
+        route.put("templateUrl", request.getContextPath() + "/templates/module/UserReportListTpl.html?v=");
+        route.put("files", request.getContextPath() + "/ctrl/module/UserReportCtrl.js");
+        return routeList;
+    }
+
+    @RequestMapping("menus")
+    public @ResponseBody List<Map<String, Object>> retrieveMenus(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        List<Map<String, Object>> menuList = Lists.newArrayList();
+        Map<String, Object> menu = null;
+        Map<String, String> subMenu = null;
+        List<Map<String, String>> subMenuList = null;
+
+        menu = Maps.newHashMap();
+        menuList.add(menu);
+        menu.put("name", "后台管理");
+        menu.put("type", "toggle");
+        menu.put("showTip", "false");
+        menu.put("icon", "fa-folder");
+
+        subMenuList = Lists.newArrayList();
+        menu.put("subMenus", subMenuList);
+
+        subMenu = Maps.newHashMap();
+        subMenu.put("name", "员工管理");
+        subMenu.put("type", "link");
+        subMenu.put("showTip", "false");
+        subMenu.put("icon", "fa-file-o");
+        subMenu.put("path", "/admin/staff");
+        subMenuList.add(subMenu);
+
+        subMenu = Maps.newHashMap();
+        subMenu.put("name", "部门管理");
+        subMenu.put("type", "link");
+        subMenu.put("showTip", "false");
+        subMenu.put("icon", "fa-file-o");
+        subMenu.put("path", "/admin/department");
+        subMenuList.add(subMenu);
+
+        menu = Maps.newHashMap();
+        menuList.add(menu);
+        menu.put("name", "员工报表");
+        menu.put("type", "link");
+        menu.put("showTip", "false");
+        menu.put("icon", "fa-file-o");
+        menu.put("path", "/module/UserReport");
+
+        return menuList;
+    }
 }

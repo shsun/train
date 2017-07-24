@@ -16,9 +16,6 @@ import base.utils.jsonresult.XJsonResultFactory;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * 部门管理
- */
 @Controller
 @RequestMapping("/admin/DepartmentCtrl/")
 public class DepartmentController extends XBasicController {
