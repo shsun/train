@@ -19,6 +19,10 @@ public class ShardedJedisContainer {
 
     private ShardedJedisPool shardedJedisPool;
 
+
+    private Object currPresentKey;
+    private Object currPresentValue;
+    
     /**
      *
      * @param pool
@@ -69,6 +73,13 @@ public class ShardedJedisContainer {
                 shardedJedisPool.returnResource(jedis);
             }
         }
+
+        //
+        if (borrowOrOprSuccess) {
+            this.currPresentKey = key;
+            this.currPresentValue = value;
+        }
+
         return value;
     }
 

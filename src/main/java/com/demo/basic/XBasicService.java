@@ -1,8 +1,10 @@
 package com.demo.basic;
 
+import base.redis.ShardedJedisContainer;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.demo.basic.ISumEntry;
 import com.demo.user.UserEntry;
+import redis.clients.jedis.ShardedJedis;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,6 +17,12 @@ import javax.servlet.http.HttpServletResponse;
  * @author shsun
  */
 public abstract class XBasicService<PARAMETER, RESULT> {
+
+
+    protected ShardedJedis shardedJedis;
+
+    protected ShardedJedisContainer shardedJedisContainer;
+
 
     @SuppressWarnings("unchecked")
     public Map<String, Object> retrieveViewData(HttpServletRequest req, HttpServletResponse res) {

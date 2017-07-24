@@ -5,6 +5,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 import org.apache.ibatis.cache.Cache;
 
+import org.apache.ibatis.cache.CacheKey;
 import redis.clients.jedis.exceptions.JedisConnectionException;
 
 import redis.clients.jedis.Jedis;
@@ -58,7 +59,17 @@ public class RedisCache implements Cache {
 
     @Override
     public void putObject(Object key, Object value) {
+
         System.out.println("RedisCache put key=" + key + ", value=" + value);
+
+
+        CacheKey ck = (CacheKey)key;
+
+
+
+
+
+
         Jedis jedis = null;
         JedisPool jedisPool = null;
         boolean borrowOrOprSuccess = true;
@@ -81,6 +92,10 @@ public class RedisCache implements Cache {
     @Override
     public Object getObject(Object key) {
         System.out.println("RedisCache get key--" + key);
+
+        CacheKey ck = (CacheKey)key;
+
+
         Jedis jedis = null;
         JedisPool jedisPool = null;
         Object value = null;
