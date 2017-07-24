@@ -1,16 +1,14 @@
 package com.demo.staff;
 
 import base.redis.SerializeUtil;
-import base.redis.ShardedJedisContainer;
 import com.demo.basic.ISumEntry;
-import com.demo.user.UserEntry;
+import com.demo.sys.LoginUserEntry;
 import com.demo.basic.XBasicService;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
-import redis.clients.jedis.ShardedJedis;
 import redis.clients.jedis.ShardedJedisPool;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,17 +39,17 @@ public class StaffService extends XBasicService<StaffEntry, StaffEntry> {
 
 
     @Override
-    public void create(HttpServletRequest req, HttpServletResponse res, UserEntry u, StaffEntry p) throws Exception {
+    public void create(HttpServletRequest req, HttpServletResponse res, LoginUserEntry u, StaffEntry p) throws Exception {
         this.mapper.insert(p);
     }
 
     @Override
-    public StaffEntry retrieveByPK(HttpServletRequest req, HttpServletResponse res, UserEntry u, StaffEntry p) throws Exception {
+    public StaffEntry retrieveByPK(HttpServletRequest req, HttpServletResponse res, LoginUserEntry u, StaffEntry p) throws Exception {
         return this.mapper.selectById(p.getId());
     }
 
     @Override
-    public List<StaffEntry> retrieveList(HttpServletRequest req, HttpServletResponse res, UserEntry u, StaffEntry p) throws Exception {
+    public List<StaffEntry> retrieveList(HttpServletRequest req, HttpServletResponse res, LoginUserEntry u, StaffEntry p) throws Exception {
 
 
     
@@ -129,22 +127,22 @@ public class StaffService extends XBasicService<StaffEntry, StaffEntry> {
     }
 
     @Override
-    public void update(HttpServletRequest req, HttpServletResponse res, UserEntry u, StaffEntry p) throws Exception {
+    public void update(HttpServletRequest req, HttpServletResponse res, LoginUserEntry u, StaffEntry p) throws Exception {
         this.mapper.updateById(p);
     }
 
     @Override
-    public void delete(HttpServletRequest req, HttpServletResponse res, UserEntry u, StaffEntry p) throws Exception {
+    public void delete(HttpServletRequest req, HttpServletResponse res, LoginUserEntry u, StaffEntry p) throws Exception {
         this.mapper.deleteById(p.getId());
     }
 
     @Override
-    public int sumOne(HttpServletRequest req, HttpServletResponse res, UserEntry u, StaffEntry p) throws Exception {
+    public int sumOne(HttpServletRequest req, HttpServletResponse res, LoginUserEntry u, StaffEntry p) throws Exception {
         return 0;
     }
 
     @Override
-    public ISumEntry sumMultiple(HttpServletRequest req, HttpServletResponse res, UserEntry u, StaffEntry p) throws Exception {
+    public ISumEntry sumMultiple(HttpServletRequest req, HttpServletResponse res, LoginUserEntry u, StaffEntry p) throws Exception {
         return null;
     }
 }

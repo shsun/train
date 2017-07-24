@@ -1,4 +1,4 @@
-package com.demo.user;
+package com.demo.sys;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -6,8 +6,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RequestBody;
-
-import com.demo.sys.UserReportMapper;
 
 import base.utils.jsonresult.XJsonResult;
 import base.utils.jsonresult.XJsonResultFactory;

@@ -2,8 +2,7 @@ package com.demo.basic;
 
 import base.redis.ShardedJedisContainer;
 import com.baomidou.mybatisplus.plugins.Page;
-import com.demo.basic.ISumEntry;
-import com.demo.user.UserEntry;
+import com.demo.sys.LoginUserEntry;
 import redis.clients.jedis.ShardedJedis;
 
 import java.util.HashMap;
@@ -43,7 +42,7 @@ public abstract class XBasicService<PARAMETER, RESULT> {
      * @param p
      * @throws Exception
      */
-    public abstract void create(HttpServletRequest req, HttpServletResponse res, UserEntry u, PARAMETER p) throws Exception;
+    public abstract void create(HttpServletRequest req, HttpServletResponse res, LoginUserEntry u, PARAMETER p) throws Exception;
 
     /**
      * @param req
@@ -53,7 +52,7 @@ public abstract class XBasicService<PARAMETER, RESULT> {
      * @return
      * @throws Exception
      */
-    public abstract RESULT retrieveByPK(HttpServletRequest req, HttpServletResponse res, UserEntry u, PARAMETER p) throws Exception;
+    public abstract RESULT retrieveByPK(HttpServletRequest req, HttpServletResponse res, LoginUserEntry u, PARAMETER p) throws Exception;
 
     /**
      * @param req
@@ -63,7 +62,7 @@ public abstract class XBasicService<PARAMETER, RESULT> {
      * @return
      * @throws Exception
      */
-    public Page retrievePage(HttpServletRequest req, HttpServletResponse res, UserEntry u, PARAMETER p) throws Exception {
+    public Page retrievePage(HttpServletRequest req, HttpServletResponse res, LoginUserEntry u, PARAMETER p) throws Exception {
         Page<RESULT> page = new Page<RESULT>();
         List<RESULT> records = retrieveList(req, res, u, p);
         page.setRecords(records);
@@ -78,7 +77,7 @@ public abstract class XBasicService<PARAMETER, RESULT> {
      * @return
      * @throws Exception
      */
-    public abstract List<RESULT> retrieveList(HttpServletRequest req, HttpServletResponse res, UserEntry u, PARAMETER p) throws Exception;
+    public abstract List<RESULT> retrieveList(HttpServletRequest req, HttpServletResponse res, LoginUserEntry u, PARAMETER p) throws Exception;
 
     /**
      * @param req
@@ -88,7 +87,7 @@ public abstract class XBasicService<PARAMETER, RESULT> {
      * @return
      * @throws Exception
      */
-    public RESULT updateAndGet(HttpServletRequest req, HttpServletResponse res, UserEntry u, PARAMETER p) throws Exception {
+    public RESULT updateAndGet(HttpServletRequest req, HttpServletResponse res, LoginUserEntry u, PARAMETER p) throws Exception {
         this.update(req, res, u, p);
         RESULT result = this.retrieveByPK(req, res, u, p);
         return result;
@@ -102,7 +101,7 @@ public abstract class XBasicService<PARAMETER, RESULT> {
      * @return
      * @throws Exception
      */
-    public abstract void update(HttpServletRequest req, HttpServletResponse res, UserEntry u, PARAMETER p) throws Exception;
+    public abstract void update(HttpServletRequest req, HttpServletResponse res, LoginUserEntry u, PARAMETER p) throws Exception;
 
     /**
      *
@@ -112,7 +111,7 @@ public abstract class XBasicService<PARAMETER, RESULT> {
      * @param p
      * @throws Exception
      */
-    public RESULT deleteAndGet(HttpServletRequest req, HttpServletResponse res, UserEntry u, PARAMETER p) throws Exception {
+    public RESULT deleteAndGet(HttpServletRequest req, HttpServletResponse res, LoginUserEntry u, PARAMETER p) throws Exception {
         RESULT result = this.retrieveByPK(req, res, u, p);
         this.delete(req, res, u, p);
         return result;
@@ -125,7 +124,7 @@ public abstract class XBasicService<PARAMETER, RESULT> {
      * @param p
      * @throws Exception
      */
-    public abstract void delete(HttpServletRequest req, HttpServletResponse res, UserEntry u, PARAMETER p) throws Exception;
+    public abstract void delete(HttpServletRequest req, HttpServletResponse res, LoginUserEntry u, PARAMETER p) throws Exception;
 
     /**
      * @param req
@@ -135,7 +134,7 @@ public abstract class XBasicService<PARAMETER, RESULT> {
      * @return
      * @throws Exception
      */
-    public abstract int sumOne(HttpServletRequest req, HttpServletResponse res, UserEntry u, PARAMETER p) throws Exception;
+    public abstract int sumOne(HttpServletRequest req, HttpServletResponse res, LoginUserEntry u, PARAMETER p) throws Exception;
 
     /**
      * 
@@ -146,5 +145,5 @@ public abstract class XBasicService<PARAMETER, RESULT> {
      * @return
      * @throws Exception
      */
-    public abstract ISumEntry sumMultiple(HttpServletRequest req, HttpServletResponse res, UserEntry u, PARAMETER p) throws Exception;
+    public abstract ISumEntry sumMultiple(HttpServletRequest req, HttpServletResponse res, LoginUserEntry u, PARAMETER p) throws Exception;
 }

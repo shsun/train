@@ -1,7 +1,7 @@
 package com.demo.basic;
 
 import base.utils.XReflectorUtil;
-import com.demo.user.UserEntry;
+import com.demo.sys.LoginUserEntry;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +23,7 @@ public abstract class XBasicBeanConvertor<T> {
      * @param p
      * @return
      */
-    public Map<String, Object> convert(HttpServletRequest rep, HttpServletResponse res, UserEntry u, T p) {
+    public Map<String, Object> convert(HttpServletRequest rep, HttpServletResponse res, LoginUserEntry u, T p) {
         Map<String, Object> result = new HashMap<>();
 
         XReflectorUtil.merge(p, result);
@@ -39,5 +39,5 @@ public abstract class XBasicBeanConvertor<T> {
         return result;
     }
 
-    protected abstract void doConvert(HttpServletRequest rep, HttpServletResponse res, UserEntry u, T p);
+    protected abstract void doConvert(HttpServletRequest rep, HttpServletResponse res, LoginUserEntry u, T p);
 }

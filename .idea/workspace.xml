@@ -2,10 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6f9c6d54-e7ed-41ec-8e76-ee547441d854" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/user/UserReportForm.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/user/UserEntry.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/sys/AppController.java" afterPath="$PROJECT_DIR$/src/main/java/com/demo/sys/ApplicationController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/user/UserEntry.java" afterPath="$PROJECT_DIR$/src/main/java/com/demo/sys/LoginUserEntry.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/user/UserReportController.java" afterPath="$PROJECT_DIR$/src/main/java/com/demo/sys/UserReportController.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/com/demo/user/UserReportEntry.java" afterPath="$PROJECT_DIR$/src/main/java/com/demo/sys/UserReportEntry.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/base/utils/XSessionUtil.java" afterPath="$PROJECT_DIR$/src/main/java/base/utils/XSessionUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/demo/basic/IBeanConvertor.java" afterPath="$PROJECT_DIR$/src/main/java/com/demo/basic/IBeanConvertor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/demo/basic/XBasicBeanConvertor.java" afterPath="$PROJECT_DIR$/src/main/java/com/demo/basic/XBasicBeanConvertor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/demo/basic/XBasicService.java" afterPath="$PROJECT_DIR$/src/main/java/com/demo/basic/XBasicService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/demo/staff/StaffService.java" afterPath="$PROJECT_DIR$/src/main/java/com/demo/staff/StaffService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/demo/sys/UserReportMapper.java" afterPath="$PROJECT_DIR$/src/main/java/com/demo/sys/UserReportMapper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/demo/sys/UserReportMapper.xml" afterPath="$PROJECT_DIR$/src/main/java/com/demo/sys/UserReportMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/demo/user/UserReportController.java" afterPath="$PROJECT_DIR$/src/main/java/com/demo/user/UserReportController.java" />
     </list>
     <ignored path="xyz.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,20 +37,8 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UserReportController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/demo/user/UserReportController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="57" selection-start-line="23" selection-start-column="57" selection-end-line="23" selection-end-column="57" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="UserReportEntry.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/demo/user/UserReportEntry.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/demo/sys/UserReportEntry.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="4" column="28" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="28" />
@@ -51,36 +47,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserEntry.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/demo/user/UserEntry.java">
+      <file leaf-file-name="LoginUserEntry.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/demo/sys/LoginUserEntry.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.26603">
+            <state vertical-scroll-proportion="0.0">
               <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserReportMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/demo/sys/UserReportMapper.java">
+      <file leaf-file-name="ApplicationController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/demo/sys/ApplicationController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
+            <state vertical-scroll-proportion="1.06412">
+              <caret line="52" column="24" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserReportMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/demo/sys/UserReportMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.0">
-              <caret line="16" column="89" selection-start-line="16" selection-start-column="89" selection-end-line="16" selection-end-column="89" />
-              <folding>
-                <marker date="1500905653000" expanded="true" signature="376:701" placeholder="select count... staff" />
-                <marker date="1500905653000" expanded="true" signature="853:1440" placeholder="select s.id,... staff" />
               </folding>
             </state>
           </provider>
@@ -112,8 +95,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/demo/straff/StaffMapper.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/demo/department/DepartmentMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/demo/departmentstaff/DepartmentStaffsRefEntry.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/demo/departmentstaff/DepartmentStaffsRefMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/demo/Log4jInitServlet.java" />
@@ -163,6 +144,8 @@
         <option value="$PROJECT_DIR$/src/main/java/com/demo/sys/UserReportMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/demo/user/UserReportController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/demo/sys/UserReportMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/demo/sys/UserReportEntry.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/demo/sys/LoginUserEntry.java" />
       </list>
     </option>
   </component>
@@ -424,7 +407,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="user" />
+              <option name="myItemId" value="sys" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1098,12 +1081,12 @@
       <workItem from="1499991394859" duration="132000" />
       <workItem from="1500129457645" duration="3913000" />
       <workItem from="1500249981841" duration="127000" />
-      <workItem from="1500901196079" duration="3316000" />
+      <workItem from="1500901196079" duration="3409000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74457000" />
+    <option name="totallyTimeSpent" value="74550000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="26" y="23" width="1414" height="877" extended-state="6" />
@@ -1154,14 +1137,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/demo/user/UserReportController.java</url>
-          <line>24</line>
-          <properties />
-          <option name="timeStamp" value="41" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
@@ -1231,6 +1206,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.24556616">
           <caret line="23" column="57" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="57" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1491,8 +1467,8 @@
           <caret line="15" column="52" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#315#316#0" expanded="true" />
-            <element signature="e#382#383#0" expanded="true" />
+            <element signature="e#324#325#0" expanded="true" />
+            <element signature="e#391#392#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1535,30 +1511,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/demo/sys/AppController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.1048158">
-          <caret line="52" column="28" selection-start-line="52" selection-start-column="28" selection-end-line="52" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/demo/sys/UserReportMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.0">
-          <caret line="16" column="89" selection-start-line="16" selection-start-column="89" selection-end-line="16" selection-end-column="89" />
+        <state vertical-scroll-proportion="0.5923836">
+          <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
           <folding>
-            <marker date="1500905653000" expanded="true" signature="376:701" placeholder="select count... staff" />
-            <marker date="1500905653000" expanded="true" signature="853:1440" placeholder="select s.id,... staff" />
+            <marker date="1500905816000" expanded="true" signature="375:700" placeholder="select count... staff" />
+            <marker date="1500905816000" expanded="true" signature="850:1437" placeholder="select s.id,... staff" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/demo/sys/UserReportMapper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.08185539">
           <caret line="4" column="37" selection-start-line="4" selection-start-column="37" selection-end-line="4" selection-end-column="37" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1566,9 +1532,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/demo/user/UserReportController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/demo/sys/UserReportController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.4706685">
           <caret line="23" column="57" selection-start-line="23" selection-start-column="57" selection-end-line="23" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1576,7 +1542,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/demo/user/UserReportEntry.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/demo/sys/UserReportEntry.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="28" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="28" />
@@ -1584,11 +1550,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/demo/user/UserEntry.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/demo/sys/LoginUserEntry.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26603">
+        <state vertical-scroll-proportion="0.0">
           <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/demo/sys/ApplicationController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.06412">
+          <caret line="52" column="24" selection-start-line="52" selection-start-column="24" selection-end-line="52" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

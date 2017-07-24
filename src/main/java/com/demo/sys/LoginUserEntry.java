@@ -1,11 +1,11 @@
-package com.demo.user;
+package com.demo.sys;
 
-public class UserEntry {
+public class LoginUserEntry {
 
     private String name;
     private String password;
 
-    public UserEntry(String name, String password) {
+    public LoginUserEntry(String name, String password) {
         this.name = name;
         this.password = password;
     }

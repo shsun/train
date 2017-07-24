@@ -1,4 +1,4 @@
-package com.demo.user;
+package com.demo.sys;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
