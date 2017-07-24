@@ -64,7 +64,7 @@ public abstract class XBasicService<PARAMETER, RESULT> {
      */
     public Page retrievePage(HttpServletRequest req, HttpServletResponse res, LoginUserEntry u, PARAMETER p) throws Exception {
         Page<RESULT> page = new Page<RESULT>();
-        List<RESULT> records = retrieveList(req, res, u, p);
+        List<RESULT> records = retrieve(req, res, u, p);
         page.setRecords(records);
         return page;
     }
@@ -77,7 +77,7 @@ public abstract class XBasicService<PARAMETER, RESULT> {
      * @return
      * @throws Exception
      */
-    public abstract List<RESULT> retrieveList(HttpServletRequest req, HttpServletResponse res, LoginUserEntry u, PARAMETER p) throws Exception;
+    public abstract List<RESULT> retrieve(HttpServletRequest req, HttpServletResponse res, LoginUserEntry u, PARAMETER p) throws Exception;
 
     /**
      * @param req

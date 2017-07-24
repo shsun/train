@@ -49,17 +49,11 @@ public class StaffService extends XBasicService<StaffEntry, StaffEntry> {
     }
 
     @Override
-    public List<StaffEntry> retrieveList(HttpServletRequest req, HttpServletResponse res, LoginUserEntry u, StaffEntry p) throws Exception {
-
-
-    
+    public List<StaffEntry> retrieve(HttpServletRequest req, HttpServletResponse res, LoginUserEntry u, StaffEntry p) throws Exception {
         Object tmpcount = this.shardedJedisContainer.getObject("num");
         if (tmpcount == null) {
 
         }
-
-
-
         int count;
         List<StaffEntry> list;
 
